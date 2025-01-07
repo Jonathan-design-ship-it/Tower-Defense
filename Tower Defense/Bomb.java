@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BombTower extends Projectile
+public class Bomb extends Projectile
 {
     private int explosionRadius;
     
@@ -28,7 +28,7 @@ public class BombTower extends Projectile
         }
     }
     
-    public BombTower(int x, int y, GreenfootImage image, int damage, int explosionRadius)
+    public Bomb(int x, int y, GreenfootImage image, int damage, int explosionRadius)
     {
         super(x, y, image);
         this.damage = damage;

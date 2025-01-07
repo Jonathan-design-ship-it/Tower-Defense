@@ -17,7 +17,7 @@ public class Dart extends Projectile
         if(e != null)
         {
             pierce -=1;
-            // e.takeDamage(damage);
+            e.takeDamage(damage);
             if(pierce == 0)
             {
                 remove = true;

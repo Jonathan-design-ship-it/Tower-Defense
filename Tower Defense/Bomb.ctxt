@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.target=BombTower
+comment0.target=Bomb
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ BombTower\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=void\ act()
 comment2.params=x\ y\ image\ damage\ explosionRadius
-comment2.target=BombTower(int,\ int,\ greenfoot.GreenfootImage,\ int,\ int)
+comment2.target=Bomb(int,\ int,\ greenfoot.GreenfootImage,\ int,\ int)
 numComments=3

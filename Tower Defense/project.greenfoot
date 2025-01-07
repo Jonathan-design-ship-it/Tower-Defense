@@ -1,4 +1,5 @@
 #Greenfoot project file
+<<<<<<< Updated upstream
 class.Blue.image=balloon2.png
 class.GameWorld.image=Map1.png
 class.Green.image=button-green.png
@@ -11,11 +12,21 @@ dependency2.from=BombTower
 dependency2.to=Enemy
 dependency2.type=UsesDependency
 dependency3.from=BombTower
+=======
+dependency1.from=Explosion
+dependency1.to=Enemy
+dependency1.type=UsesDependency
+dependency2.from=Bomb
+dependency2.to=Enemy
+dependency2.type=UsesDependency
+dependency3.from=Bomb
+>>>>>>> Stashed changes
 dependency3.to=Explosion
 dependency3.type=UsesDependency
 dependency4.from=Dart
 dependency4.to=Enemy
 dependency4.type=UsesDependency
+<<<<<<< Updated upstream
 dependency5.from=Enemy
 dependency5.to=Coordinate
 dependency5.type=UsesDependency
@@ -35,6 +46,15 @@ editor.fx.0.y=0
 height=1027
 package.numDependencies=8
 package.numTargets=17
+=======
+editor.fx.0.height=865
+editor.fx.0.width=1453
+editor.fx.0.x=-6
+editor.fx.0.y=-6
+height=663
+package.numDependencies=4
+package.numTargets=14
+>>>>>>> Stashed changes
 project.charset=windows-1252
 publish.hasSource=false
 publish.locked=true
@@ -45,7 +65,11 @@ publish.title=
 publish.url=
 readme.height=60
 readme.name=@README
+<<<<<<< Updated upstream
 readme.width=49
+=======
+readme.width=48
+>>>>>>> Stashed changes
 readme.x=10
 readme.y=10
 simulation.speed=50
@@ -57,40 +81,62 @@ target1.width=120
 target1.x=0
 target1.y=0
 target10.height=70
+<<<<<<< Updated upstream
 target10.name=Coordinate
+=======
+target10.name=Tower
+>>>>>>> Stashed changes
 target10.showInterface=false
 target10.type=ClassTarget
 target10.width=120
 target10.x=0
 target10.y=0
 target11.height=70
+<<<<<<< Updated upstream
 target11.name=Yellow
+=======
+target11.name=WinScreen
+>>>>>>> Stashed changes
 target11.showInterface=false
 target11.type=ClassTarget
 target11.width=120
 target11.x=0
 target11.y=0
 target12.height=70
+<<<<<<< Updated upstream
 target12.name=Enemy
+=======
+target12.name=Bomb
+>>>>>>> Stashed changes
 target12.showInterface=false
 target12.type=AbstractTarget
 target12.width=120
 target12.x=0
 target12.y=0
+<<<<<<< Updated upstream
 target13.height=50
 target13.name=BombTower
+=======
+target13.height=70
+target13.name=MyWorld
+>>>>>>> Stashed changes
 target13.showInterface=false
 target13.type=ClassTarget
 target13.width=90
 target13.x=0
 target13.y=0
 target14.height=70
+<<<<<<< Updated upstream
 target14.name=Tower
+=======
+target14.name=Dart
+>>>>>>> Stashed changes
 target14.showInterface=false
 target14.type=ClassTarget
 target14.width=120
 target14.x=0
 target14.y=0
+<<<<<<< Updated upstream
 target15.height=70
 target15.name=WinScreen
 target15.showInterface=false
@@ -113,6 +159,9 @@ target17.width=120
 target17.x=0
 target17.y=0
 target2.height=50
+=======
+target2.height=70
+>>>>>>> Stashed changes
 target2.name=Explosion
 target2.showInterface=false
 target2.type=ClassTarget
@@ -127,41 +176,62 @@ target3.width=120
 target3.x=0
 target3.y=0
 target4.height=70
+<<<<<<< Updated upstream
 target4.name=SuperSmoothMover
+=======
+target4.name=DartMonkey
+>>>>>>> Stashed changes
 target4.showInterface=false
 target4.type=AbstractTarget
 target4.width=130
 target4.x=0
 target4.y=0
 target5.height=70
+<<<<<<< Updated upstream
 target5.name=GameWorld
+=======
+target5.name=Projectile
+>>>>>>> Stashed changes
 target5.showInterface=false
 target5.type=ClassTarget
 target5.width=120
 target5.x=0
 target5.y=0
 target6.height=70
+<<<<<<< Updated upstream
 target6.name=DartMonkey
+=======
+target6.name=Red
+>>>>>>> Stashed changes
 target6.showInterface=false
 target6.type=ClassTarget
 target6.width=120
 target6.x=0
 target6.y=0
 target7.height=70
+<<<<<<< Updated upstream
 target7.name=Projectile
+=======
+target7.name=StartScreen
+>>>>>>> Stashed changes
 target7.showInterface=false
 target7.type=ClassTarget
 target7.width=120
 target7.x=0
 target7.y=0
 target8.height=70
+<<<<<<< Updated upstream
 target8.name=Red
+=======
+target8.name=Yellow
+>>>>>>> Stashed changes
 target8.showInterface=false
 target8.type=ClassTarget
 target8.width=120
 target8.x=0
 target8.y=0
 target9.height=70
+<<<<<<< Updated upstream
 target9.name=StartScreen
 target9.showInterface=false
 target9.type=ClassTarget
@@ -173,3 +243,16 @@ width=1460
 world.lastInstantiated=GameWorld
 xPosition=279
 yPosition=26
+=======
+target9.name=Enemy
+target9.showInterface=false
+target9.type=AbstractTarget
+target9.width=120
+target9.x=0
+target9.y=0
+version=3.1.0
+width=1451
+world.lastInstantiated=MyWorld
+xPosition=0
+yPosition=63
+>>>>>>> Stashed changes
