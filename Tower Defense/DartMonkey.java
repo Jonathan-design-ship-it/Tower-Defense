@@ -14,6 +14,6 @@ public class DartMonkey extends Tower
      */
     public void act() 
     {
-        // Add your action code here.
+        
     }    
 }

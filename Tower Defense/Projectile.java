@@ -8,12 +8,47 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Projectile extends Actor
 {
-    /**
-     * Act - do whatever the Projectile wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
+    private int xDestination;
+    private int yDestination;
+    private int timer;
+    protected boolean remove;
+    protected int damage;
+    
+    public void act()
     {
-        // Add your action code here.
-    }    
+        if(remove == true)
+        {
+            getWorld().removeObject(this);
+        }
+    }
+    
+    public Projectile(int x, int y, GreenfootImage image)
+    {
+        xDestination = x;
+        yDestination = y;
+        timer = 0;
+        remove = false;
+        setImage(image);
+        turnTowards(xDestination, yDestination);
+    }
+    
+    public boolean move()
+    {
+        if(timer == 60)
+        {
+            remove = true;
+            return true;
+        }
+        else
+        {
+            move(15);
+            timer ++;
+        }
+        return false;
+    }
+    
+    public boolean getRemove()
+    {
+        return remove;
+    }
 }
