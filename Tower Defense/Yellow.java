@@ -9,14 +9,28 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Yellow extends Enemy
 {
     public Yellow(){
-        health = 4;
+        health = 1; //4
+        speed = 3;
+    }
+    public Yellow(int over){
+        health = 1 - over; //4
         speed = 3;
     }
     protected void takeDamage(int dmg){
-        
+        health -= dmg;
+    }
+    protected void checkPop(){
+        if (health <= 0){
+            int over = Math.abs(health);
+            setLocation(10000, 10000);
+            getWorld().addObject(new Green(over), x, y);
+            getWorld().removeObject(this);
+        }
     }
     public void act() 
     {
-        // Add your action code here.
+        x = getX();
+        y = getY();
+        checkPop();
     }    
 }

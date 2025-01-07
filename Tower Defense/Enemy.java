@@ -13,7 +13,9 @@ public abstract class Enemy extends Actor
     protected boolean camo;
     protected boolean metal;
     protected boolean regen;
+    protected int x,y;
     
+    protected abstract void checkPop();
     protected abstract void takeDamage(int dmg);
     
     public void act() 
