@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class Enemy here.
@@ -15,11 +16,16 @@ public abstract class Enemy extends Actor
     protected boolean regen;
     protected int x,y;
     
+    //path
+    private Coordinate currentDestination;
+    protected static ArrayList<Coordinate> destinations;
+    
     protected abstract void checkPop();
     protected abstract void takeDamage(int dmg);
     
     public void act() 
     {
         // Add your action code here.
-    }    
+    }
+    
 }
