@@ -2,7 +2,6 @@
 comment0.target=Blue
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Blue\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-<<<<<<< Updated upstream
 comment1.target=Blue()
 comment2.params=over
 comment2.target=Blue(int)
@@ -13,8 +12,3 @@ comment4.target=void\ checkPop()
 comment5.params=
 comment5.target=void\ act()
 numComments=6
-=======
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Blue\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=2
->>>>>>> Stashed changes

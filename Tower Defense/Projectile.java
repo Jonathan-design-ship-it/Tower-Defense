@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Projectile extends Actor
+public class Projectile extends SuperSmoothMover
 {
     private int xDestination;
     private int yDestination;

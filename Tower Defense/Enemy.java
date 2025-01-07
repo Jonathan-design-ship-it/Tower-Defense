@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public abstract class Enemy extends Actor
+public abstract class Enemy extends SuperSmoothMover
 {
     protected int health;
     protected double speed;
