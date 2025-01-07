@@ -1,16 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Blue here.
+ * Write a description of class Green here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Blue extends Enemy
+public class Green extends Enemy
 {
-    public Blue(){
-        health = 1;
-        speed = 1.2;
+    public Green(){
+        health = 3;
+        speed = 1.5;
     }
     protected void takeDamage(int dmg){
         

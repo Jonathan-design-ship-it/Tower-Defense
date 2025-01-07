@@ -8,10 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Red extends Enemy
 {
-    /**
-     * Act - do whatever the Red wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public Red(){
+        health = 1;
+        speed = 1;
+    }
+    protected void takeDamage(int dmg){
+        
+    }
     public void act() 
     {
         // Add your action code here.

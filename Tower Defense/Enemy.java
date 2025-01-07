@@ -6,12 +6,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends Actor
+public abstract class Enemy extends Actor
 {
-    /**
-     * Act - do whatever the Enemy wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    protected int health;
+    protected double speed;
+    protected boolean camo;
+    protected boolean metal;
+    protected boolean regen;
+    
+    protected abstract void takeDamage(int dmg);
+    
     public void act() 
     {
         // Add your action code here.
