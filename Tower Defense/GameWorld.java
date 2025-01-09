@@ -17,7 +17,8 @@ public class GameWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1100, 842, 1, false);
-        //.setImage("Map1.png");
+        
+        setBackground(new GreenfootImage("Map1.png"));
         
     }
 }
