@@ -15,17 +15,18 @@ public abstract class Enemy extends SuperSmoothMover
     protected boolean metal;
     protected boolean regen;
     protected int x,y;
-    
+
     //path
-    private Coordinate currentDestination;
-    protected static ArrayList<Coordinate> destinations;
+    protected Coordinate currentDestination;
+    //protected static ArrayList<Coordinate> destinations;
+    protected int destinations = 0;
     
     protected abstract void checkPop();
     protected abstract void takeDamage(int dmg);
     
     public void act() 
     {
-        // Add your action code here.
+        currentDestination = this.getWorld().getDestination(0);
     }
     
 }
