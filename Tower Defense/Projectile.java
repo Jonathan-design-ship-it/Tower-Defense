@@ -20,7 +20,6 @@ public class Projectile extends SuperSmoothMover
         {
             getWorld().removeObject(this);
         }
-        move();
     }
     
     public Projectile(int x, int y, GreenfootImage image)
@@ -33,17 +32,19 @@ public class Projectile extends SuperSmoothMover
         turnTowards(xDestination, yDestination);
     }
     
-    public void move()
+    public boolean move()
     {
         if(timer == 60)
         {
             remove = true;
+            return true;
         }
         else
         {
             move(15);
             timer ++;
         }
+        return false;
     }
     
     public boolean getRemove()

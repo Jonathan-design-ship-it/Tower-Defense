@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.LinkedList;
 
 /**
  * Write a description of class Dart here.
@@ -10,17 +9,13 @@ import java.util.LinkedList;
 public class Dart extends Projectile
 {
     private int pierce;
-    LinkedList<Enemy> enemies;
     
     public void act()
     {
         super.act();
         Enemy e = (Enemy) this.getOneIntersectingObject(Enemy.class);
-        
-        // checks if there is an enemy and it hasn't already been hit
-        if(e != null && enemies.indexOf(e) == -1)
+        if(e != null)
         {
-            enemies.add(e);
             pierce -=1;
             e.takeDamage(damage);
             if(pierce == 0)
@@ -35,6 +30,5 @@ public class Dart extends Projectile
         super(x, y, image);
         this.damage = damage;
         this.pierce = pierce;
-        enemies = new LinkedList<Enemy>();
     }
 }
