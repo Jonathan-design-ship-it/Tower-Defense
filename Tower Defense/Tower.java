@@ -25,10 +25,18 @@ public abstract class Tower extends Actor
         {
             enemies = (ArrayList<Enemy>) getObjectsInRange(range, Enemy.class);
             // temporary, later make it attack closest enemy
-            attack(enemies.get(1));
+            if(enemies.size() > 0)
+            {
+                attack(enemies.get(0));
+            }
         }
         
         timer ++;
+        
+        if(timer == attackSpeed)
+        {
+            timer = 0;
+        }
     }
     
     public void findClosest()
@@ -36,10 +44,11 @@ public abstract class Tower extends Actor
         
     }
     
-    public Tower(int x, int y, int damage, int range, int attackSpeed)
+    //int x, int y, 
+    public Tower(int damage, int range, int attackSpeed)
     {
-        this.x = x;
-        this.y = y;
+        // this.x = x;
+        // this.y = y;
         this.damage = damage;
         this.range = range;
         this.attackSpeed = attackSpeed;

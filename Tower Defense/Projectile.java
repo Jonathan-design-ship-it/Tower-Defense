@@ -13,29 +13,29 @@ public class Projectile extends SuperSmoothMover
     private int timer;
     protected boolean remove;
     protected int damage;
+    private boolean turned = false;
     
     public void act()
     {
-        if(remove == true)
+        if(!turned)
         {
-            getWorld().removeObject(this);
+            turnTowards(xDestination, yDestination);
+            turned = true;
         }
-        move();
+        move(); 
     }
     
-    public Projectile(int x, int y, GreenfootImage image)
+    public Projectile(int x, int y)
     {
         xDestination = x;
         yDestination = y;
         timer = 0;
         remove = false;
-        setImage(image);
-        turnTowards(xDestination, yDestination);
     }
     
     public void move()
     {
-        if(timer == 60)
+        if(timer == 15)
         {
             remove = true;
         }

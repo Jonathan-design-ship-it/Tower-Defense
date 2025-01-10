@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class Dart extends Projectile
 {
     private int pierce;
-    LinkedList<Enemy> enemies;
+    private LinkedList<Enemy> enemies;
     
     public void act()
     {
@@ -28,11 +28,16 @@ public class Dart extends Projectile
                 remove = true;
             }
         }
+        
+        if(remove == true)
+        {
+            getWorld().removeObject(this);
+        }
     }
     
-    public Dart(int x, int y, GreenfootImage image, int damage, int pierce)
+    public Dart(int x, int y, int damage, int pierce)
     {
-        super(x, y, image);
+        super(x, y);
         this.damage = damage;
         this.pierce = pierce;
         enemies = new LinkedList<Enemy>();

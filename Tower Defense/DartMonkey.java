@@ -16,17 +16,18 @@ public class DartMonkey extends Tower
      */
     public void act() 
     {
-        
+        super.act();
     }
     
-    public DartMonkey(int x, int y, int damage, int range, int attackSpeed, int pierce)
+    public DartMonkey(int damage, int range, int attackSpeed, int pierce)
     {
-        super(x, y, damage, range, attackSpeed);
+        super(damage, range, attackSpeed);
         this.pierce = pierce;
     }
     
     public void attack(Enemy e)
     {
-        
+        turnTowards(e.getX(), e.getY());
+        this.getWorld().addObject(new Dart(e.getX(), e.getY(), damage, pierce), getX(), getY());
     }
 }
