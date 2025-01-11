@@ -15,8 +15,8 @@ public class GameWorld extends World
     private Coordinate c;
     private static int map;
     
-    // wave spawning
-    private int waveCount; // wave number
+    // round spawning
+    private int roundCount; // round number
     private int spawnDelay; // delay between each spawning balloon
     private int redCount; // amount of red balloon
     private int blueCount; // amount of blue balloon
@@ -61,14 +61,15 @@ public class GameWorld extends World
     public void act(){
         actCount ++;
         if (actCount == 1){
-            startWave(waveCount);
-            waveCount++;
+            startRound(roundCount);
+            roundCount++;
         }
     }
     
-    private void startWave (int waveCount){
-        switch(waveCount){
+    private void startRound (int roundCount){
+        switch(roundCount){
             case 0:
+                // round 1, 12 red balloons
                 redCount = 20;
                 spawnDelay = 50;
                 for (int i = 0; i < redCount*spawnDelay; i++){
@@ -77,20 +78,50 @@ public class GameWorld extends World
                 // add a queue later on with (spawnCount for when to spawn and balloon type)
                 break;
             case 1:
-                
+                // round 2
+                // 25 red balloons
                 break;
             case 2:
-                
+                // round 3
+                // 12 red, on the 12th spawn 2 blue
+                // small pause
+                // 12 red, on the 12th spawn 3 blue
                 break;
             case 3:
-                
+                // round 4
+                // 5 red, on 5th spawn 12 blue
+                // 5 red, on 5th spawn 12 blue
                 break;
             case 4:
-                
+                // round 5
+                // 15 red, on 15th spawn 10 blue
+                // 15 red, on 15th spawn 15 blue
                 break;
             case 5:
-                
+                // round 6
+                // 15 green
                 break;
+            case 6:
+                // round 7
+                // 75 blue
+                break;
+            case 7:
+                // round 8
+                // 20 red, 30 blue
+                // 30 red, 20 blue
+                // 20 red, 20 blue
+                break;
+            case 8:
+                // round 9
+                // 25 blue, 15 green, 25 blue
+                break;
+            case 9:
+                // round 10
+                // 35 green
+                break;
+            case 10:
+                // round 11
+                // 15 yellow
         }
         spawnDelay++;
     }
