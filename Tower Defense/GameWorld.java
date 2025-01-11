@@ -14,6 +14,8 @@ public class GameWorld extends World
     public static ArrayList<Coordinate> map3Path;
     private Coordinate c;
     private static int map;
+    
+    private int actCount;
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -31,23 +33,32 @@ public class GameWorld extends World
         if (map == 1){
             setBackground(new GreenfootImage("Map1.png"));
 
-            map1Path.add(new Coordinate (175,400));
-            map1Path.add(new Coordinate (170,185));
-            map1Path.add(new Coordinate (370,175));
-            map1Path.add(new Coordinate (375,615));
-            map1Path.add(new Coordinate (95,920));
-            map1Path.add(new Coordinate (95,650));
-            map1Path.add(new Coordinate (750,755));
-            map1Path.add(new Coordinate (750,525));
+            map1Path.add(new Coordinate (170,400));
+            map1Path.add(new Coordinate (170,175));
+            map1Path.add(new Coordinate (375,175));
+            map1Path.add(new Coordinate (375,620));
+            map1Path.add(new Coordinate (95,620));
+            map1Path.add(new Coordinate (95,760));
+            map1Path.add(new Coordinate (750,760));
+            map1Path.add(new Coordinate (750,530));
             map1Path.add(new Coordinate (540,530));
-            map1Path.add(new Coordinate (353,325));
+            map1Path.add(new Coordinate (540,325));
             map1Path.add(new Coordinate (760,325));
-            map1Path.add(new Coordinate (750,85));
+            map1Path.add(new Coordinate (760,100));
             map1Path.add(new Coordinate (470,100));
-            map1Path.add(new Coordinate (470,-30));
-
-            addObject(new Yellow(), 0, 400);
+            map1Path.add(new Coordinate (470,-30));            
         }
+    }
+    
+    public void act(){
+        actCount ++;
+        /*
+        if (actCount == 10){
+            addObject(new Yellow(map1Path), 0, 400);
+            actCount = 0;
+        }
+        */
+        addObject(new Yellow(map1Path), 0, 400);
     }
 
     public static Coordinate getDestination(int num){

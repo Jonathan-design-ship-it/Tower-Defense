@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class Blue here.
@@ -8,13 +9,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Blue extends Enemy
 {
-    public Blue(){
+    public Blue(ArrayList<Coordinate> map){
         health = 1; //2
-        speed = 1.2;
+        speed = 3.3;
+        enableStaticRotation();
+        destinations = new ArrayList<>(map);
     }
-    public Blue(int over){
+    public Blue(int over, ArrayList<Coordinate> map){
         health = 1 - over; //2
-        speed = 1.2;
+        speed = 3.3;
+        enableStaticRotation();
+        destinations = new ArrayList<>(map);
     }
     protected void takeDamage(int dmg){
         health -= dmg;
@@ -23,7 +28,7 @@ public class Blue extends Enemy
         if (health <= 0){
             int over = Math.abs(health);
             setLocation(10000, 10000);
-            getWorld().addObject(new Red(over), x, y);
+            getWorld().addObject(new Red(over, destinations), x, y);
             getWorld().removeObject(this);
         }
     }
@@ -31,6 +36,7 @@ public class Blue extends Enemy
     {
         x = getX();
         y = getY();
+        super.act();
         checkPop();
     }    
 }
