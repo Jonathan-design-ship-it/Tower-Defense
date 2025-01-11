@@ -15,6 +15,14 @@ public class GameWorld extends World
     private Coordinate c;
     private static int map;
     
+    // wave spawning
+    private int waveCount; // wave number
+    private int spawnDelay; // delay between each spawning balloon
+    private int redCount; // amount of red balloon
+    private int blueCount; // amount of blue balloon
+    private int greenCount; // amount of green balloon
+    private int yellowCount;  // amount of yellow balloon
+    
     private int actCount;
     /**
      * Constructor for objects of class GameWorld.
@@ -52,13 +60,39 @@ public class GameWorld extends World
     
     public void act(){
         actCount ++;
-        /*
-        if (actCount == 10){
-            addObject(new Yellow(map1Path), 0, 400);
-            actCount = 0;
+        if (actCount == 1){
+            startWave(waveCount);
+            waveCount++;
         }
-        */
-        addObject(new Yellow(map1Path), 0, 400);
+    }
+    
+    private void startWave (int waveCount){
+        switch(waveCount){
+            case 0:
+                redCount = 20;
+                spawnDelay = 50;
+                for (int i = 0; i < redCount*spawnDelay; i++){
+                    addObject(new Red(map1Path), 0, 400);
+                }
+                // add a queue later on with (spawnCount for when to spawn and balloon type)
+                break;
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                
+                break;
+            case 5:
+                
+                break;
+        }
+        spawnDelay++;
     }
 
     public static Coordinate getDestination(int num){
