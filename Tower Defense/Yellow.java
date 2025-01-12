@@ -16,7 +16,7 @@ public class Yellow extends Enemy
         
         destinations = randomize(map);
     }
-    public Yellow(int over, ArrayList<Coordinate> map){
+    public Yellow(ArrayList<Coordinate> map, int over){
         health = 1 - over; //4
         speed = 6;
         enableStaticRotation();
@@ -30,7 +30,7 @@ public class Yellow extends Enemy
         if (health <= 0){
             int over = Math.abs(health);
             setLocation(10000, 10000);
-            getWorld().addObject(new Green(over, destinations), x, y);
+            getWorld().addObject(new Green(destinations, over), x, y);
             getWorld().removeObject(this);
         }
     }

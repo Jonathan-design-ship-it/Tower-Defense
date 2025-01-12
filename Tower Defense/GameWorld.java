@@ -61,7 +61,7 @@ public class GameWorld extends World
     public void act(){
         actCount ++;
         if (actCount == 20){
-            addObject(new Red(map1Path), 0, 400);
+            addObject(new Black(map1Path), 0, 400);
             actCount = 0;
         }
         /*

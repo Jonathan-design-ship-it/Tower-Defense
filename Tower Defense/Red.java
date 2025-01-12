@@ -17,7 +17,7 @@ public class Red extends Enemy
         destinations = randomize(map);
     }
 
-    public Red(int over, ArrayList<Coordinate> map){
+    public Red(ArrayList<Coordinate> map, int over){
         health = 1 - over; //1
         speed = 2.9;
         enableStaticRotation();
@@ -40,8 +40,6 @@ public class Red extends Enemy
         x = getX();
         y = getY();
         super.act();
-        //if (getY() < 670)
-        //takeDamage(1);
         checkPop();
     }    
 }

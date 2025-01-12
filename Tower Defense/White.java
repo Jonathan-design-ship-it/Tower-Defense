@@ -2,23 +2,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class Blue here.
+ * Write a description of class White here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Blue extends Enemy
+public class White extends Enemy
 {
-    public Blue(ArrayList<Coordinate> map){
-        health = 1; //2
-        speed = 3.3;
+    public White(ArrayList<Coordinate> map){
+        health = 1; //9
+        speed = 6;
         enableStaticRotation();
         
         destinations = randomize(map);
     }
-    public Blue(ArrayList<Coordinate> map, int over){
-        health = 1 - over; //2
-        speed = 3.3;
+    public White(ArrayList<Coordinate> map, int over){
+        health = 1 - over; //9
+        speed = 6;
         enableStaticRotation();
         
         destinations = randomize(map);
@@ -30,7 +30,8 @@ public class Blue extends Enemy
         if (health <= 0){
             int over = Math.abs(health);
             setLocation(10000, 10000);
-            getWorld().addObject(new Red(destinations, over), x, y);
+            getWorld().addObject(new Yellow(destinations, over), x, y);
+            getWorld().addObject(new Yellow(destinations, over), x, y);
             getWorld().removeObject(this);
         }
     }
@@ -40,5 +41,5 @@ public class Blue extends Enemy
         y = getY();
         super.act();
         checkPop();
-    }    
+    }  
 }
