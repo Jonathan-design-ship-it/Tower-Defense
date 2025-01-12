@@ -13,13 +13,15 @@ public class Yellow extends Enemy
         health = 1; //4
         speed = 6;
         enableStaticRotation();
-        destinations = new ArrayList<>(map);
+        
+        destinations = randomize(map);
     }
     public Yellow(int over, ArrayList<Coordinate> map){
         health = 1 - over; //4
         speed = 6;
         enableStaticRotation();
-        destinations = new ArrayList<>(map);
+        
+        destinations = randomize(map);
     }
     protected void takeDamage(int dmg){
         health -= dmg;

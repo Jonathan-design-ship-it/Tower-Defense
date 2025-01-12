@@ -60,10 +60,16 @@ public class GameWorld extends World
     
     public void act(){
         actCount ++;
+        if (actCount == 20){
+            addObject(new Red(map1Path), 0, 400);
+            actCount = 0;
+        }
+        /*
         if (actCount == 1){
             startRound(roundCount);
             roundCount++;
         }
+        */
     }
     
     private void startRound (int roundCount){

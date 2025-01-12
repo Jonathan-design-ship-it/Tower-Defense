@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Write a description of class Enemy here.
@@ -15,39 +16,59 @@ public abstract class Enemy extends SuperSmoothMover
     protected boolean metal;
     protected boolean regen;
     protected int x,y;
-    
+
     protected int actCount;
 
     //path
     protected Coordinate currentDestination;
     protected ArrayList<Coordinate> destinations;
-    
+
     protected abstract void checkPop();
+
     protected abstract void takeDamage(int dmg);
-    
+
     public void act() 
     {
         //currentDestination = this.getWorld().getDestination(0);
         actCount++;
-        
+
         // Check if there is another destination for me if I don't have one
         if (currentDestination == null && destinations.size() > 0){
             currentDestination = getNextDestination ();
         }
-        
+
         if (currentDestination != null){
             moveTowardsDestination();
         }
     }
-    
+
+    protected ArrayList<Coordinate> randomize(ArrayList<Coordinate> map){
+        destinations = new ArrayList<>(); // Create a new list for randomized coordinates
+        Random random = new Random();
+        for (Coordinate c : map) {
+            // Create a copy of the original coordinate
+            Coordinate newCoordinate = new Coordinate(c.getX(), c.getY());
+
+            // Add a random offset to the new coordinate
+            double randomX = -10 + (20 * random.nextDouble()); // Random between -10 and 10
+            double randomY = -10 + (20 * random.nextDouble()); // Random between -10 and 10
+
+            newCoordinate.dX(randomX);
+            newCoordinate.dY(randomY);
+            
+            destinations.add(newCoordinate);
+        }
+        return destinations;
+    }
+
     public void addDestination (Coordinate c){
         destinations.add(c);
     }
-    
+
     protected Coordinate getNextDestination () {
         return destinations.get(0);
     }
-    
+
     protected void moveTowardsDestination(){
         double distanceToDestination = getDistance (new Coordinate(getX(), getY()), currentDestination);
         if (distanceToDestination < speed){
@@ -59,8 +80,8 @@ public abstract class Enemy extends SuperSmoothMover
             move(speed);
         }
     }
-    
-     /**
+
+    /**
      * Static method that gets the distance between the x,y coordinates of two Actors
      * using Pythagorean Theorum.
      *
