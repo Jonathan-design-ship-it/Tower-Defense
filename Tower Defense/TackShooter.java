@@ -8,18 +8,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TackShooter extends Tower
 {
+    private int pierce;
+    
     public void act()
     {
-        
+        super.act();
     }
     
-    public void TackShooter()
+    public TackShooter(int damage, int range, int attackSpeed, int pierce)
     {
-        
+        super(damage, range, attackSpeed);
+        this.pierce = pierce;
     }
     
     public void attack(Enemy e)
     {
-        
+        // shoot up
+        this.getWorld().addObject(new Tack(getX() + this.getImage().getWidth() / 2, getX() + this.getImage().getHeight() / 2, damage, pierce), getX(), getY());
     }
 }
