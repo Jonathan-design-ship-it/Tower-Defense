@@ -15,6 +15,8 @@ public class Red extends Enemy
         enableStaticRotation();
         
         destinations = randomize(map);
+        
+        scale();
     }
 
     public Red(ArrayList<Coordinate> map, int over){
@@ -23,6 +25,8 @@ public class Red extends Enemy
         enableStaticRotation();
         
         destinations = randomize(map);
+        
+        scale();
     }
 
     protected void takeDamage(int dmg){

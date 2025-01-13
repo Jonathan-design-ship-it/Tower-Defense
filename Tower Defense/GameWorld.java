@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Write a description of class GameWorld here.
@@ -54,14 +55,27 @@ public class GameWorld extends World
             map1Path.add(new Coordinate (760,325));
             map1Path.add(new Coordinate (760,100));
             map1Path.add(new Coordinate (470,100));
-            map1Path.add(new Coordinate (470,-30));            
+            map1Path.add(new Coordinate (470,-70));            
         }
     }
     
     public void act(){
         actCount ++;
-        if (actCount == 20){
-            addObject(new Black(map1Path), 0, 400);
+        if (actCount == 60){
+            Random random = new Random();
+            int num = random.nextInt(6);
+            if (num == 0)
+                addObject(new Red(map1Path), 0, 400);
+            if (num == 1)
+                addObject(new Blue(map1Path), 0, 400);
+            if (num == 2)
+                addObject(new Green(map1Path), 0, 400);
+            if (num == 3)
+                addObject(new Yellow(map1Path), 0, 400);
+            if (num == 4)
+                addObject(new Black(map1Path), 0, 400);
+            if (num == 5)
+                addObject(new White(map1Path), 0, 400);
             actCount = 0;
         }
         /*

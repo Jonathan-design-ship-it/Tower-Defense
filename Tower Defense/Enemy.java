@@ -40,6 +40,13 @@ public abstract class Enemy extends SuperSmoothMover
         if (currentDestination != null){
             moveTowardsDestination();
         }
+        
+        if (getY() <= -50) 
+            takeDamage(100);
+    }
+    
+    protected void scale(){
+        getImage().scale((int)(getImage().getWidth()*1.5), (int)(getImage().getHeight()*1.5));
     }
 
     protected ArrayList<Coordinate> randomize(ArrayList<Coordinate> map){

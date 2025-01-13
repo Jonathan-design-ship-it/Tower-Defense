@@ -15,6 +15,8 @@ public class Green extends Enemy
         enableStaticRotation();
         
         destinations = randomize(map);
+        
+        scale();
     }
     public Green(ArrayList<Coordinate> map, int over){
         health = 1 - over; //3
@@ -22,6 +24,8 @@ public class Green extends Enemy
         enableStaticRotation();
         
         destinations = randomize(map);
+        
+        scale();
     }
     protected void takeDamage(int dmg){
         health -= dmg;
