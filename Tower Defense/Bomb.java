@@ -28,9 +28,9 @@ public class Bomb extends Projectile
         }
     }
     
-    public Bomb(int x, int y, GreenfootImage image, int damage, int explosionRadius)
+    public Bomb(int x, int y, int damage, int explosionRadius)
     {
-        super(x, y, image);
+        super(x, y);
         this.damage = damage;
         this.explosionRadius = explosionRadius;
     }
