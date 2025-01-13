@@ -29,10 +29,12 @@ public class Dart extends Projectile
             }
         }
         
-        if(remove == true)
-        {
-            getWorld().removeObject(this);
-        }
+        // if(remove == true)
+        // {
+            // getWorld().removeObject(this);
+        // }
+        
+        remove();
     }
     
     public Dart(int x, int y, int damage, int pierce)

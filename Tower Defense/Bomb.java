@@ -26,6 +26,8 @@ public class Bomb extends Projectile
             }
             remove = true;
         }
+        
+        remove();
     }
     
     public Bomb(int x, int y, int damage, int explosionRadius)

@@ -50,4 +50,12 @@ public class Projectile extends SuperSmoothMover
     {
         return remove;
     }
+    
+    public void remove()
+    {
+        if(remove == true)
+        {
+            getWorld().removeObject(this);
+        }
+    }
 }
