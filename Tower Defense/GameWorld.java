@@ -42,6 +42,7 @@ public class GameWorld extends World
         if (map == 1){
             setBackground(new GreenfootImage("Map1.png"));
 
+            map1Path.add(new Coordinate (-50,400));
             map1Path.add(new Coordinate (170,400));
             map1Path.add(new Coordinate (170,175));
             map1Path.add(new Coordinate (375,175));

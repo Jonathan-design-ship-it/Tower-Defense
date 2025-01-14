@@ -20,7 +20,8 @@ public class Balloon extends SuperSmoothMover
     private int actCount;
 
     private String type;
-    private int ID; // unique id per balloon
+    
+    private double targetFirst;
 
     //path
     private Coordinate currentDestination;
@@ -37,7 +38,7 @@ public class Balloon extends SuperSmoothMover
         this.type = type;
         setImage(type.concat(".png"));
         enableStaticRotation();
-        scale();
+        scale(1.5);
         destinations = randomize(map);
         switch(type){
             case "red":
@@ -81,33 +82,33 @@ public class Balloon extends SuperSmoothMover
                     type = "red";
                     health = 1 - over;
                     setImage("red.png");
-                    scale();
+                    scale(1.5);
                     return;
                 case "green":
                     type = "blue";
                     health = 1 - over;
                     setImage("blue.png");
-                    scale();
+                    scale(1.5);
                     return;
                 case "yellow":
                     type = "green";
                     health = 1 - over;
                     setImage("green.png");
-                    scale();
+                    scale(1.5);
                     return;
                 case "black":
                     type = "yellow";
                     health = 1 - over;
                     getWorld().addObject(new Balloon("yellow", destinations, over), getX(), getY());
                     setImage("yellow.png");
-                    scale();
+                    scale(1.5);
                     return;
                 case "white":
                     type = "yellow";
                     health = 1 - over;
                     getWorld().addObject(new Balloon("yellow", destinations, over), getX(), getY());
                     setImage("yellow.png");
-                    scale();
+                    scale(1.5);
                     return;
             }
         }
@@ -117,8 +118,8 @@ public class Balloon extends SuperSmoothMover
         health -= dmg;
     }
 
-    protected void scale(){
-        getImage().scale((int)(getImage().getWidth()*1.5), (int)(getImage().getHeight()*1.5));
+    protected void scale(double num){
+        getImage().scale((int)(getImage().getWidth()*num), (int)(getImage().getHeight()*num));
     }
 
     protected ArrayList<Coordinate> randomize(ArrayList<Coordinate> map){
@@ -168,6 +169,7 @@ public class Balloon extends SuperSmoothMover
         } else {
             turnTowards (currentDestination.getX(), currentDestination.getY());
             move(speed);
+            targetFirst += speed;
         }
     }
 
