@@ -10,12 +10,12 @@ import java.util.LinkedList;
 public class Dart extends Projectile
 {
     private int pierce;
-    private LinkedList<Enemy> enemies;
+    private LinkedList<Balloon> enemies;
     
     public void act()
     {
         super.act();
-        Enemy e = (Enemy) this.getOneIntersectingObject(Enemy.class);
+        Balloon e = (Balloon) this.getOneIntersectingObject(Balloon.class);
         
         // checks if there is an enemy and it hasn't already been hit
         if(e != null && enemies.indexOf(e) == -1)
@@ -42,6 +42,6 @@ public class Dart extends Projectile
         super(x, y);
         this.damage = damage;
         this.pierce = pierce;
-        enemies = new LinkedList<Enemy>();
+        enemies = new LinkedList<Balloon>();
     }
 }

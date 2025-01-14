@@ -16,14 +16,14 @@ public abstract class Tower extends Actor
     protected int attackSpeed;
     protected int timer;
     
-    public abstract void attack(Enemy e);
+    public abstract void attack(Balloon e);
     
     public void act() 
     {
-        ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+        ArrayList<Balloon> enemies = new ArrayList<Balloon>();
         if(timer == 0)
         {
-            enemies = (ArrayList<Enemy>) getObjectsInRange(range, Enemy.class);
+            enemies = (ArrayList<Balloon>) getObjectsInRange(range, Balloon.class);
             // temporary, later make it attack closest enemy
             if(enemies.size() > 0)
             {

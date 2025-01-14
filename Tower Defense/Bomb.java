@@ -14,13 +14,13 @@ public class Bomb extends Projectile
     public void act()
     {
         super.act();
-        Enemy e = (Enemy) this.getOneIntersectingObject(Enemy.class);
+        Balloon e = (Balloon) this.getOneIntersectingObject(Balloon.class);
         if(e != null)
         {
             Explosion exp = new Explosion();
             this.getWorld().addObject((Actor) exp, getX(), getY());
-            ArrayList<Enemy> enemies = (ArrayList<Enemy>) exp.getEnemiesInRange(explosionRadius);
-            for(Enemy enemy : enemies)
+            ArrayList<Balloon> enemies = (ArrayList<Balloon>) exp.getEnemiesInRange(explosionRadius);
+            for(Balloon enemy : enemies)
             {
                 enemy.takeDamage(damage);
             }

@@ -21,7 +21,7 @@ public class BombTower extends Tower
         this.explosionRadius = explosionRadius;
     }
     
-    public void attack(Enemy e)
+    public void attack(Balloon e)
     {
         turnTowards(e.getX(), e.getY());
         this.getWorld().addObject(new Bomb(e.getX(), e.getY(), damage, explosionRadius), getX(), getY());

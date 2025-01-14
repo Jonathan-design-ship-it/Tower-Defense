@@ -40,6 +40,6 @@ public class Explosion extends Actor
     public List getEnemiesInRange(int explosionRadius)
     {
         getImage().scale(explosionRadius * 2, explosionRadius * 2);
-        return getObjectsInRange(explosionRadius, Enemy.class);
+        return getObjectsInRange(explosionRadius, Balloon.class);
     }
 }

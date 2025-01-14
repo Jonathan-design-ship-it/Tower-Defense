@@ -21,7 +21,7 @@ public class TackShooter extends Tower
         this.pierce = pierce;
     }
     
-    public void attack(Enemy e)
+    public void attack(Balloon e)
     {
         // shoot up
         this.getWorld().addObject(new Tack(getX() + this.getImage().getWidth() / 2, getX() + this.getImage().getHeight() / 2, damage, pierce), getX(), getY());

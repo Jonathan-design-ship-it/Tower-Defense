@@ -25,7 +25,7 @@ public class DartMonkey extends Tower
         this.pierce = pierce;
     }
     
-    public void attack(Enemy e)
+    public void attack(Balloon e)
     {
         turnTowards(e.getX(), e.getY());
         this.getWorld().addObject(new Dart(e.getX(), e.getY(), damage, pierce), getX(), getY());
