@@ -21,13 +21,23 @@ public abstract class Tower extends Actor
     public void act() 
     {
         ArrayList<Balloon> enemies = new ArrayList<Balloon>();
+        Balloon closest;
         if(timer == 0)
         {
             enemies = (ArrayList<Balloon>) getObjectsInRange(range, Balloon.class);
-            // temporary, later make it attack closest enemy
+            
             if(enemies.size() > 0)
             {
-                attack(enemies.get(0));
+                closest = enemies.get(0);
+                for(Balloon b : enemies)
+                {
+                    if(b.getFirst() > closest.getFirst())
+                    {
+                        closest = b;
+                    }
+                }
+                
+                attack(closest);
             }
         }
         
@@ -37,11 +47,6 @@ public abstract class Tower extends Actor
         {
             timer = 0;
         }
-    }
-    
-    public void findClosest()
-    {
-        
     }
     
     //int x, int y, 
