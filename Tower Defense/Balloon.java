@@ -70,7 +70,11 @@ public class Balloon extends SuperSmoothMover
         goDestination();
         checkPop();
     }
-
+    
+    public double getFirst(){
+        return targetFirst;
+    }
+    
     protected void checkPop(){
         if (health <= 0){
             int over = Math.abs(health);
