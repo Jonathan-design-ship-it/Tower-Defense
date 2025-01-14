@@ -68,6 +68,8 @@ public class Balloon extends SuperSmoothMover
         x = getX();
         y = getY();
         goDestination();
+        if (getY() < 30)
+            takeDamage(100);
         checkPop();
     }
     
