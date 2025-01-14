@@ -49,14 +49,16 @@ public abstract class Tower extends Actor
         }
     }
     
-    //int x, int y, 
+    protected void scale(double num){
+        getImage().scale((int)(getImage().getWidth()*num), (int)(getImage().getHeight()*num));
+    }
+    
     public Tower(int damage, int range, int attackSpeed)
     {
-        // this.x = x;
-        // this.y = y;
         this.damage = damage;
         this.range = range;
         this.attackSpeed = attackSpeed;
         timer = 0;
+        scale(1.6);
     }
 }

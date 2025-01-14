@@ -24,8 +24,10 @@ public class TackShooter extends Tower
     public void attack(Balloon e)
     {
         // middle of tower coordinates
-        int x = getX() + this.getImage().getWidth() / 2;
-        int y = getY() + this.getImage().getHeight() / 2;
+        // int x = getX() + this.getImage().getWidth() / 2;
+        // int y = getY() + this.getImage().getHeight() / 2;
+        int x = getX();
+        int y = getY();
         
         for(int i = 0; i < 360; i += 45)
         {
