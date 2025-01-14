@@ -42,7 +42,6 @@ public class GameWorld extends World
         if (map == 1){
             setBackground(new GreenfootImage("Map1.png"));
 
-            map1Path.add(new Coordinate (-50,400));
             map1Path.add(new Coordinate (170,400));
             map1Path.add(new Coordinate (170,175));
             map1Path.add(new Coordinate (375,175));
@@ -56,7 +55,7 @@ public class GameWorld extends World
             map1Path.add(new Coordinate (760,325));
             map1Path.add(new Coordinate (760,100));
             map1Path.add(new Coordinate (470,100));
-            map1Path.add(new Coordinate (470, 0)); //change y to -70       
+            map1Path.add(new Coordinate (470, -70)); //change y to -70       
         }
     }
     
