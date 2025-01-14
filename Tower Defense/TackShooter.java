@@ -23,7 +23,13 @@ public class TackShooter extends Tower
     
     public void attack(Balloon e)
     {
-        // shoot up
-        this.getWorld().addObject(new Tack(getX() + this.getImage().getWidth() / 2, getX() + this.getImage().getHeight() / 2, damage, pierce), getX(), getY());
+        // middle of tower coordinates
+        int x = getX() + this.getImage().getWidth() / 2;
+        int y = getY() + this.getImage().getHeight() / 2;
+        
+        for(int i = 0; i < 360; i += 45)
+        {
+            this.getWorld().addObject(new Tack(x, y, damage, pierce, i), x, y);
+        }
     }
 }
