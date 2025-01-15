@@ -22,7 +22,7 @@ public class Dart extends Projectile
         {
             enemies.add(e);
             pierce -=1;
-            e.takeDamage(damage);
+            e.takeDamage("dart", damage);
             if(pierce == 0)
             {
                 remove = true;

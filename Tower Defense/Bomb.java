@@ -22,7 +22,7 @@ public class Bomb extends Projectile
             ArrayList<Balloon> enemies = (ArrayList<Balloon>) exp.getEnemiesInRange(explosionRadius);
             for(Balloon enemy : enemies)
             {
-                enemy.takeDamage(damage);
+                enemy.takeDamage("bomb", damage);
             }
             remove = true;
         }

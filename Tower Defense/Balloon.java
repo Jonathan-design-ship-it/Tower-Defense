@@ -21,6 +21,12 @@ public class Balloon extends SuperSmoothMover
 
     private String type;
     
+    // for freeze
+    private int freezeCount;
+    private int freezeLength;
+    private boolean isFrozen = false;
+    private double originalSpeed;
+    
     private double targetFirst;
 
     //path
@@ -46,9 +52,26 @@ public class Balloon extends SuperSmoothMover
         x = getX();
         y = getY();
         goDestination();
+        checkFrozen();
         if (getY() < 30)
-            takeDamage(100);
+            takeDamage("endZone", 100);
         checkPop();
+    }
+    
+    private void checkFrozen(){
+        freezeCount ++;
+        if (freezeCount >= freezeLength){
+            isFrozen = false;
+            speed = originalSpeed;
+        }
+    }
+    
+    public void freeze(int length){
+        if (!isFrozen && !type.equals("white")){
+            freezeLength = length;
+            freezeCount = 0;
+            speed = 0;
+        }
     }
     
     public double getFirst(){
@@ -62,61 +85,62 @@ public class Balloon extends SuperSmoothMover
         switch(type){
             case "red":
                 speed = 2.9;
-                return;
+                break;
             case "blue":
                 speed = 3.3;
-                return;
+                break;
             case "green":
                 speed = 4.2;
-                return;
+                break;
             case "yellow":
                 speed = 6;
-                return;
+                break;
             case "black":
                 speed = 6;
-                return;
+                break;
             case "white":
                 speed = 6;
-                return;
+                break;
         }
+        originalSpeed = speed;
     }
     
     protected void checkPop(){
         if (health <= 0){
             int over = Math.abs(health);
+            health = 1 - over;
             switch(type){
                 case "red":
                     getWorld().removeObject(this);
                     break;
                 case "blue":
                     type = "red";
-                    health = 1 - over;
                     break;
                 case "green":
                     type = "blue";
-                    health = 1 - over;
                     break;
                 case "yellow":
                     type = "green";
-                    health = 1 - over;
                     break;
                 case "black":
                     type = "yellow";
-                    health = 1 - over;
-                    getWorld().addObject(new Balloon("yellow", map, over), getX(), getY());
+                    getWorld().addObject(new Balloon("yellow", destinations, over), getX(), getY());
                     break;
                 case "white":
                     type = "yellow";
-                    health = 1 - over;
-                    getWorld().addObject(new Balloon("yellow", map, over), getX(), getY());
+                    getWorld().addObject(new Balloon("yellow", destinations, over), getX(), getY());
                     break;
             }
             setType(type);
         }
     }
 
-    protected void takeDamage(int dmg){
-        health -= dmg;
+    protected void takeDamage(String projectile, int dmg){
+        if (projectile.equals("bomb") && type.equals("black")){
+            // dont damage
+        } else {
+            health -= dmg;
+        }
     }
 
     protected void scale(double num){
