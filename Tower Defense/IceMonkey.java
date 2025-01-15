@@ -13,6 +13,11 @@ public class IceMonkey extends Tower
         
     }
     
+    public IceMonkey()
+    {
+        this(0, 120, 160);
+    }
+    
     public IceMonkey(int damage, int range, int attackSpeed)
     {
         super(damage, range, attackSpeed);

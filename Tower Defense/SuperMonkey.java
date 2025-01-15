@@ -13,6 +13,11 @@ public class SuperMonkey extends DartMonkey
         super.act();
     }
     
+    public SuperMonkey()
+    {
+        this(1, 280, 7, 1);
+    }
+    
     public SuperMonkey(int damage, int range, int attackSpeed, int pierce)
     {
         super(damage, range, attackSpeed, pierce);

@@ -15,6 +15,11 @@ public class TackShooter extends Tower
         super.act();
     }
     
+    public TackShooter()
+    {
+        this(1, 140, 80, 1);
+    }
+    
     public TackShooter(int damage, int range, int attackSpeed, int pierce)
     {
         super(damage, range, attackSpeed);

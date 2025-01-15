@@ -15,6 +15,11 @@ public class BombTower extends Tower
         super.act();
     }
     
+    public BombTower()
+    {
+        this(1, 240, 120, 100);
+    }
+    
     public BombTower(int damage, int range, int attackSpeed, int explosionRadius)
     {
         super(damage, range, attackSpeed);

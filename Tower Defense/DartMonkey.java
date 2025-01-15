@@ -19,6 +19,10 @@ public class DartMonkey extends Tower
         super.act();
     }
     
+    public DartMonkey(){
+        this(1, 200, 40, 1);
+    }
+    
     public DartMonkey(int damage, int range, int attackSpeed, int pierce)
     {
         super(damage, range, attackSpeed);
