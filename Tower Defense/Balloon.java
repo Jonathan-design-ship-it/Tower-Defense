@@ -36,10 +36,29 @@ public class Balloon extends SuperSmoothMover
         health = 1 - over; //1
         this.map = map;
         this.type = type;
+        destinations = randomize(map);
+        setType(type);
+    }
+
+    public void act() 
+    {
+        actCount++;
+        x = getX();
+        y = getY();
+        goDestination();
+        if (getY() < 30)
+            takeDamage(100);
+        checkPop();
+    }
+    
+    public double getFirst(){
+        return targetFirst;
+    }
+    
+    private void setType(String type){
         setImage(type.concat(".png"));
         enableStaticRotation();
         scale(1.5);
-        destinations = randomize(map);
         switch(type){
             case "red":
                 speed = 2.9;
@@ -61,21 +80,6 @@ public class Balloon extends SuperSmoothMover
                 return;
         }
     }
-
-    public void act() 
-    {
-        actCount++;
-        x = getX();
-        y = getY();
-        goDestination();
-        if (getY() < 30)
-            takeDamage(100);
-        checkPop();
-    }
-    
-    public double getFirst(){
-        return targetFirst;
-    }
     
     protected void checkPop(){
         if (health <= 0){
@@ -83,40 +87,31 @@ public class Balloon extends SuperSmoothMover
             switch(type){
                 case "red":
                     getWorld().removeObject(this);
-                    return;
+                    break;
                 case "blue":
                     type = "red";
                     health = 1 - over;
-                    setImage("red.png");
-                    scale(1.5);
-                    return;
+                    break;
                 case "green":
                     type = "blue";
                     health = 1 - over;
-                    setImage("blue.png");
-                    scale(1.5);
-                    return;
+                    break;
                 case "yellow":
                     type = "green";
                     health = 1 - over;
-                    setImage("green.png");
-                    scale(1.5);
-                    return;
+                    break;
                 case "black":
                     type = "yellow";
                     health = 1 - over;
-                    getWorld().addObject(new Balloon("yellow", destinations, over), getX(), getY());
-                    setImage("yellow.png");
-                    scale(1.5);
-                    return;
+                    getWorld().addObject(new Balloon("yellow", map, over), getX(), getY());
+                    break;
                 case "white":
                     type = "yellow";
                     health = 1 - over;
-                    getWorld().addObject(new Balloon("yellow", destinations, over), getX(), getY());
-                    setImage("yellow.png");
-                    scale(1.5);
-                    return;
+                    getWorld().addObject(new Balloon("yellow", map, over), getX(), getY());
+                    break;
             }
+            setType(type);
         }
     }
 
@@ -171,6 +166,7 @@ public class Balloon extends SuperSmoothMover
         if (distanceToDestination < speed){
             setLocation (currentDestination.getX(), currentDestination.getY());
             destinations.remove(currentDestination);
+            map.remove(currentDestination);
             currentDestination = null;
         } else {
             turnTowards (currentDestination.getX(), currentDestination.getY());
