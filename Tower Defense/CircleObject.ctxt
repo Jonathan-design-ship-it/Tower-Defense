@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=CircleObject
+comment1.params=radius
+comment1.target=CircleObject(int)
+comment2.params=
+comment2.target=void\ updateImage()
+comment3.params=
+comment3.target=void\ act()
+numComments=4

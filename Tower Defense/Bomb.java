@@ -30,9 +30,9 @@ public class Bomb extends Projectile
         remove();
     }
     
-    public Bomb(int x, int y, int damage, int explosionRadius)
+    public Bomb(int x, int y, int damage, int explosionRadius, int expiryDate)
     {
-        super(x, y);
+        super(x, y, expiryDate);
         this.damage = damage;
         this.explosionRadius = explosionRadius;
         getImage().scale(63,52);

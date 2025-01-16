@@ -30,6 +30,6 @@ public class BombTower extends Tower
     public void attack(Balloon e)
     {
         turnTowards(e.getX(), e.getY());
-        this.getWorld().addObject(new Bomb(e.getX(), e.getY(), damage, explosionRadius), getX(), getY());
+        this.getWorld().addObject(new Bomb(e.getX(), e.getY(), damage, explosionRadius, 15), getX(), getY());
     }
 }

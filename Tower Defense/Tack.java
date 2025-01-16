@@ -8,10 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Tack extends Dart
 {
-    public Tack(int x, int y, int damage, int pierce, int angle)
+    public Tack(int x, int y, int damage, int pierce, int angle, int expiryDate)
     {
-        super(angleToDirectionX(x, angle), angleToDirectionY(y, angle), damage, pierce);
-        getImage().scale(48,30);
+        super(angleToDirectionX(x, angle), angleToDirectionY(y, angle), damage, pierce, expiryDate);
+        getImage().scale(30,20);
     }
     
     public static int angleToDirectionX(int x, int angle)

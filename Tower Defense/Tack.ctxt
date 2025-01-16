@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Tack
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Tack\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=x\ y\ damage\ pierce\ angle
-comment1.target=Tack(int,\ int,\ int,\ int,\ int)
+comment1.params=x\ y\ damage\ pierce\ angle\ expiryDate
+comment1.target=Tack(int,\ int,\ int,\ int,\ int,\ int)
 comment2.params=x\ angle
 comment2.target=int\ angleToDirectionX(int,\ int)
 comment3.params=y\ angle

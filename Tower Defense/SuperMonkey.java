@@ -15,11 +15,11 @@ public class SuperMonkey extends DartMonkey
     
     public SuperMonkey()
     {
-        this(1, 280, 8, 1);
+        this(1, 280, 8, 1, 100);
     }
     
-    public SuperMonkey(int damage, int range, int attackSpeed, int pierce)
+    public SuperMonkey(int damage, int range, int attackSpeed, int pierce, int expiryDate)
     {
-        super(damage, range, attackSpeed, pierce);
+        super(damage, range, attackSpeed, pierce, expiryDate);
     }
 }

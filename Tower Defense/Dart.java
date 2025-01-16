@@ -37,9 +37,9 @@ public class Dart extends Projectile
         remove();
     }
     
-    public Dart(int x, int y, int damage, int pierce)
+    public Dart(int x, int y, int damage, int pierce, int expiryDate)
     {
-        super(x, y);
+        super(x, y, expiryDate);
         this.damage = damage;
         this.pierce = pierce;
         enemies = new LinkedList<Balloon>();

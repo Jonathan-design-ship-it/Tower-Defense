@@ -36,7 +36,7 @@ public class TackShooter extends Tower
         
         for(int i = 0; i < 360; i += 45)
         {
-            this.getWorld().addObject(new Tack(x, y, damage, pierce, i), x, y);
+            this.getWorld().addObject(new Tack(x, y, damage, pierce, i, 7), x, y);
         }
     }
 }

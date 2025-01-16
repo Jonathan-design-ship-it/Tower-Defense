@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class DartMonkey extends Tower
 {
     private int pierce;
+    private int expiryDate;
     
     /**
      * Act - do whatever the DartMonkey wants to do. This method is called whenever
@@ -20,18 +21,19 @@ public class DartMonkey extends Tower
     }
     
     public DartMonkey(){
-        this(1, 200, 40, 1);
+        this(1, 200, 40, 1, 15);
     }
     
-    public DartMonkey(int damage, int range, int attackSpeed, int pierce)
+    public DartMonkey(int damage, int range, int attackSpeed, int pierce, int expiryDate)
     {
         super(damage, range, attackSpeed);
         this.pierce = pierce;
+        this.expiryDate = expiryDate;
     }
     
     public void attack(Balloon e)
     {
         turnTowards(e.getX(), e.getY());
-        this.getWorld().addObject(new Dart(e.getX(), e.getY(), damage, pierce), getX(), getY());
+        this.getWorld().addObject(new Dart(e.getX(), e.getY(), damage, pierce, expiryDate), getX(), getY());
     }
 }

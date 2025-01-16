@@ -11,6 +11,7 @@ public class Projectile extends SuperSmoothMover
     private int xDestination;
     private int yDestination;
     private int timer;
+    private int expiryDate;
     protected boolean remove;
     protected int damage;
     private boolean turned = false;
@@ -25,17 +26,18 @@ public class Projectile extends SuperSmoothMover
         move(); 
     }
     
-    public Projectile(int x, int y)
+    public Projectile(int x, int y, int expiryDate)
     {
         xDestination = x;
         yDestination = y;
         timer = 0;
+        this.expiryDate = expiryDate;
         remove = false;
     }
     
     public void move()
     {
-        if(timer == 15)
+        if(timer == expiryDate)
         {
             remove = true;
         }
