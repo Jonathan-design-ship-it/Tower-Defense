@@ -15,12 +15,6 @@ public class Spawner
         spawnTime = time;
     }
     
-    public void add(String type, int time)
-    {
-        this.type = type;
-        spawnTime = time;
-    }
-    
     public String getType()
     {
         return type;

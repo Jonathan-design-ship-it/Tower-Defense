@@ -90,12 +90,13 @@ public class GameWorld extends World
         actCount = 0;
         }
          */
-
-        if (roundCount == 0){
+        if (Greenfoot.isKeyDown("enter") && !playing) {
             roundCount++;
+            System.out.println("Round Count: " + roundCount);
             addRound(roundCount);
+            playing = true;
         }
-        
+
         if (playing)
             spawnRound();
     }
@@ -107,7 +108,6 @@ public class GameWorld extends World
             }
             spawnCounter ++;
         } else {
-            spawnCounter = 0;
             playing = false;
         }
     }
@@ -130,44 +130,127 @@ public class GameWorld extends World
             case 3:
                 // round 3
                 // 12 red, on the 12th spawn 2 blue
-                // small pause
                 // 12 red, on the 12th spawn 3 blue
+                for (int i = 0; i < 14; i++){
+                    if (i < 12){
+                        spawn.add(new Spawner("red", 20*i));
+                    }else{
+                        spawn.add(new Spawner("blue", 20*i));
+                    }
+                }
+                for (int i = 15; i < 30; i++){
+                    if (i < 27){
+                        spawn.add(new Spawner("red", 20*i));
+                    }else{
+                        spawn.add(new Spawner("blue", 20*i));
+                    }
+                }
                 break;
             case 4:
                 // round 4
                 // 5 red, on 5th spawn 12 blue
                 // 5 red, on 5th spawn 12 blue
+                for (int i = 0; i < 17; i++){
+                    if (i < 5){
+                        spawn.add(new Spawner("red", 20*i));
+                    }else{
+                        spawn.add(new Spawner("blue", 20*i));
+                    }
+                }
+                for (int i = 18; i < 35; i++){
+                    if (i < 23){
+                        spawn.add(new Spawner("red", 20*i));
+                    }else{
+                        spawn.add(new Spawner("blue", 20*i));
+                    }
+                }
                 break;
             case 5:
                 // round 5
                 // 15 red, on 15th spawn 10 blue
                 // 15 red, on 15th spawn 15 blue
+                for (int i = 0; i < 25; i++){
+                    if (i < 15){
+                        spawn.add(new Spawner("red", 20*i));
+                    }else{
+                        spawn.add(new Spawner("blue", 20*i));
+                    }
+                }
+                for (int i = 26; i < 56; i++){
+                    if (i < 41){
+                        spawn.add(new Spawner("red", 20*i));
+                    }else{
+                        spawn.add(new Spawner("blue", 20*i));
+                    }
+                }
                 break;
             case 6:
                 // round 6
                 // 15 green
+                for (int i = 0; i < 15; i++){
+                    spawn.add(new Spawner("green", 20*i));
+                }
                 break;
             case 7:
                 // round 7
                 // 75 blue
+                for (int i = 0; i < 75; i++) {
+                    spawn.add(new Spawner("blue", 20*i));
+                }
                 break;
             case 8:
                 // round 8
                 // 20 red, 30 blue
                 // 30 red, 20 blue
                 // 20 red, 20 blue
+                for (int i = 0; i < 50; i++){
+                    if (i < 20){
+                        spawn.add(new Spawner("red", 20*i));
+                    }else{
+                        spawn.add(new Spawner("blue", 20*i));
+                    }
+                }
+                for (int i = 51; i < 101; i++){
+                    if (i < 81){
+                        spawn.add(new Spawner("red", 20*i));
+                    }else{
+                        spawn.add(new Spawner("blue", 20*i));
+                    }
+                }
+                for (int i = 102; i < 142; i++) {
+                    if (i < 122) {
+                        spawn.add(new Spawner("red", 20*i));
+                    } else {
+                        spawn.add(new Spawner("blue", 20*i));
+                    }
+                }
                 break;
             case 9:
                 // round 9
                 // 25 blue, 15 green, 25 blue
+                for (int i = 0; i < 65; i++){
+                    if (i < 25){
+                        spawn.add(new Spawner("blue", 20*i));
+                    }else if (i < 40){
+                        spawn.add(new Spawner("green", 20*i));
+                    }else{
+                        spawn.add(new Spawner("blue", 20*i));
+                    }
+                }
                 break;
             case 10:
                 // round 10
                 // 35 green
+                for (int i = 0; i < 35; i++) {
+                    spawn.add(new Spawner("green", 20*i));
+                }
                 break;
             case 11:
                 // round 11
                 // 15 yellow
+                for (int i = 0; i < 15; i++) {
+                    spawn.add(new Spawner("yellow", 20*i));
+                }
         }
         spawnCounter = 0;
     }
