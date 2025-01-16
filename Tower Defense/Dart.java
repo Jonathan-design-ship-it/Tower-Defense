@@ -43,5 +43,6 @@ public class Dart extends Projectile
         this.damage = damage;
         this.pierce = pierce;
         enemies = new LinkedList<Balloon>();
+        getImage().scale(55,16);
     }
 }

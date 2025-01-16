@@ -1,10 +1,13 @@
 #Greenfoot project file
+class.Bomb.image=bomb.png
 class.BombTower.image=bomb_tower.png
+class.Dart.image=dart.png
 class.DartMonkey.image=dart_tower.png
 class.GameWorld.image=Map1.png
 class.IceMonkey.image=ice_tower.png
 class.SuperMonkey.image=super_tower.png
-class.TackShooter.image=tack.png
+class.Tack.image=tack.png
+class.TackShooter.image=tack_tower.png
 dependency1.from=GameWorld
 dependency1.to=Coordinate
 dependency1.type=UsesDependency
@@ -207,5 +210,5 @@ target9.y=0
 version=3.1.0
 width=1460
 world.lastInstantiated=GameWorld
-xPosition=333
-yPosition=111
+xPosition=189
+yPosition=124

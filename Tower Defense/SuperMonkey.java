@@ -15,7 +15,7 @@ public class SuperMonkey extends DartMonkey
     
     public SuperMonkey()
     {
-        this(1, 280, 7, 1);
+        this(1, 280, 8, 1);
     }
     
     public SuperMonkey(int damage, int range, int attackSpeed, int pierce)

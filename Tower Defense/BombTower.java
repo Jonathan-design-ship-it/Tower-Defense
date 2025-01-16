@@ -18,6 +18,7 @@ public class BombTower extends Tower
     public BombTower()
     {
         this(1, 240, 120, 100);
+        scale(1.1);
     }
     
     public BombTower(int damage, int range, int attackSpeed, int explosionRadius)

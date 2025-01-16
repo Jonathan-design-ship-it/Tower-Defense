@@ -11,7 +11,7 @@ public class Tack extends Dart
     public Tack(int x, int y, int damage, int pierce, int angle)
     {
         super(angleToDirectionX(x, angle), angleToDirectionY(y, angle), damage, pierce);
-        this.setImage(new GreenfootImage("images/barrel.png"));
+        getImage().scale(48,30);
     }
     
     public static int angleToDirectionX(int x, int angle)

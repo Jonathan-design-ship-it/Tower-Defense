@@ -35,5 +35,6 @@ public class Bomb extends Projectile
         super(x, y);
         this.damage = damage;
         this.explosionRadius = explosionRadius;
+        getImage().scale(63,52);
     }
 }
