@@ -37,7 +37,7 @@ public class IceMonkey extends Tower
     
     public IceMonkey()
     {
-        this(1, 120, 160, 60);
+        this(1, 120, 160, 120);
     }
     
     public IceMonkey(int damage, int range, int attackSpeed, int freezeDuration)
