@@ -70,15 +70,15 @@ public class GameWorld extends World
             map1Path.add(new Coordinate (470, -70)); //change y to -70       
         }
         
-        ui = new UI();
-        addObject(ui, 900, 100); // Position UI at the top right (or wherever needed)
+        ui = new UI();  // Create UI to hold the tower buttons
+        addObject(ui, 900, 100);  // Position UI at the top right (or wherever needed)
 
-        // Create buttons for each tower and add them to the world
-        addObject(new BombButton(), 900, 200); // BombTower Button
-        addObject(new DartMonkeyButton(), 900, 300); // DartMonkey Button
-        addObject(new SuperMonkeyButton(), 900, 400); // SuperMonkey Button
-        addObject(new IceMonkeyButton(), 900, 500); // IceMonkey Button
-        addObject(new TackShooterButton(), 900, 600); // TackShooter Button
+        // Add buttons for each tower, using the Button class
+        addObject(new Button("BombTowerButton.png", 0), 900, 200);  // Bomb Tower Button
+        addObject(new Button("DartMonkeyButton.png", 1), 900, 300);  // Dart Monkey Button
+        addObject(new Button("SuperMonkeyButton.png", 2), 900, 400);  // Super Monkey Button
+        addObject(new Button("IceMonkeyButton.png", 3), 900, 500);  // Ice Monkey Button
+        addObject(new Button("TackShooterButton.png", 4), 900, 600);  // Tack Shooter Button
     }
 
     public void act(){
@@ -104,7 +104,7 @@ public class GameWorld extends World
         }
         */
        
-        // Get selected tower from UI
+        // Get the selected tower from the UI
         int selectedTowerIndex = ui.getSelectedTower();
 
         // Check for mouse click on grid to place tower
