@@ -8,16 +8,10 @@ public class UI extends Actor {
         if (Greenfoot.mouseClicked(this)) {
             Actor clicked = Greenfoot.getMouseInfo().getActor();
 
-            if (clicked instanceof BombButton) {
-                selectedTower = 0; // BombTower
-            } else if (clicked instanceof DartMonkeyButton) {
-                selectedTower = 1; // DartMonkey
-            } else if (clicked instanceof SuperMonkeyButton) {
-                selectedTower = 2; // SuperMonkey
-            } else if (clicked instanceof IceMonkeyButton) {
-                selectedTower = 3; // IceMonkey
-            } else if (clicked instanceof TackShooterButton) {
-                selectedTower = 4; // TackShooter
+            // Check if the clicked actor is a Button and set the selected tower accordingly
+            if (clicked instanceof Button) {
+                Button clickedButton = (Button) clicked;
+                selectedTower = clickedButton.getTowerType(); // Set selected tower based on button's tower type
             }
         }
     }
