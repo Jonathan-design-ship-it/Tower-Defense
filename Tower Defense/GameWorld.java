@@ -32,6 +32,9 @@ public class GameWorld extends World
     private int yellowCount;  // amount of yellow balloon
 
     private int actCount;
+    
+    private UI ui;
+    private Tower selectedTower = null;
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -66,6 +69,16 @@ public class GameWorld extends World
             map1Path.add(new Coordinate (470,100));
             map1Path.add(new Coordinate (470, -70)); //change y to -70       
         }
+        
+        ui = new UI();
+        addObject(ui, 900, 100); // Position UI at the top right (or wherever needed)
+
+        // Create buttons for each tower and add them to the world
+        addObject(new BombButton(), 900, 200); // BombTower Button
+        addObject(new DartMonkeyButton(), 900, 300); // DartMonkey Button
+        addObject(new SuperMonkeyButton(), 900, 400); // SuperMonkey Button
+        addObject(new IceMonkeyButton(), 900, 500); // IceMonkey Button
+        addObject(new TackShooterButton(), 900, 600); // TackShooter Button
     }
 
     public void act(){
@@ -90,6 +103,28 @@ public class GameWorld extends World
             actCount = 0;
         }
         */
+       
+        // Get selected tower from UI
+        int selectedTowerIndex = ui.getSelectedTower();
+
+        // Check for mouse click on grid to place tower
+        if (Greenfoot.mouseClicked(null)) {
+            MouseInfo mouse = Greenfoot.getMouseInfo();
+            int x = mouse.getX();
+            int y = mouse.getY();
+
+            // Calculate which grid cell was clicked
+            int gridX = (x - 80) / 92;
+            int gridY = (y - 51) / 92;
+
+            // If the click is inside the grid
+            if (gridX >= 0 && gridX < 9 && gridY >= 0 && gridY < 9) {
+                // Place the selected tower at the clicked grid position
+                if (selectedTowerIndex != -1) {
+                    placeTower(gridX, gridY, selectedTowerIndex);
+                }
+            }
+        }
 
         if (Greenfoot.isKeyDown("enter") && !playing) {
             roundCount++;
@@ -101,7 +136,7 @@ public class GameWorld extends World
         if (playing)
             spawnRound();
     }
-
+    
     private void spawnRound (){
         if (spawn.size() > 0){
             if (spawn.peek().getTime() == spawnCounter){
@@ -297,6 +332,27 @@ public class GameWorld extends World
                 }
             }
             System.out.println(); // Move to the next line after each row
+        }
+    }
+    
+    private void placeTower(int x, int y, int towerIndex) {
+        // Use the selected tower index to place the correct tower at the grid coordinates
+        switch (towerIndex) {
+            case 0:
+                addObject(new BombTower(), x * 92 + 80, y * 92 + 51);
+                break;
+            case 1:
+                addObject(new DartMonkey(), x * 92 + 80, y * 92 + 51);
+                break;
+            case 2:
+                addObject(new SuperMonkey(), x * 92 + 80, y * 92 + 51);
+                break;
+            case 3:
+                addObject(new IceMonkey(), x * 92 + 80, y * 92 + 51);
+                break;
+            case 4:
+                addObject(new TackShooter(), x * 92 + 80, y * 92 + 51);
+                break;
         }
     }
 }
