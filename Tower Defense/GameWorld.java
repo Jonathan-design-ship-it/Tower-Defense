@@ -72,24 +72,25 @@ public class GameWorld extends World
         actCount ++;
         /*
         if (actCount == 60){
-        Random random = new Random();
-        int num = random.nextInt(6);
-        //int num = 0;
-        if (num == 0)
-        addObject(new Balloon("red", map1Path), 0, 400);
-        if (num == 1)
-        addObject(new Balloon("blue", map1Path), 0, 400);
-        if (num == 2)
-        addObject(new Balloon("green", map1Path), 0, 400);
-        if (num == 3)
-        addObject(new Balloon("yellow", map1Path), 0, 400);
-        if (num == 4)
-        addObject(new Balloon("white", map1Path), 0, 400);
-        if (num == 5)
-        addObject(new Balloon("black", map1Path), 0, 400);
-        actCount = 0;
+            Random random = new Random();
+            int num = random.nextInt(6);
+            //int num = 0;
+            if (num == 0)
+                addObject(new Balloon("red", map1Path), 0, 400);
+            if (num == 1)
+                addObject(new Balloon("blue", map1Path), 0, 400);
+            if (num == 2)
+                addObject(new Balloon("green", map1Path), 0, 400);
+            if (num == 3)
+                addObject(new Balloon("yellow", map1Path), 0, 400);
+            if (num == 4)
+                addObject(new Balloon("white", map1Path), 0, 400);
+            if (num == 5)
+                addObject(new Balloon("black", map1Path), 0, 400);
+            actCount = 0;
         }
-         */
+        */
+
         if (Greenfoot.isKeyDown("enter") && !playing) {
             roundCount++;
             System.out.println("Round Count: " + roundCount);

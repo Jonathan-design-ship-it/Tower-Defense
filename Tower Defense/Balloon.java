@@ -20,14 +20,17 @@ public class Balloon extends SuperSmoothMover
     private int actCount;
 
     private String type;
-    
+
     // for freeze
     private int freezeCount;
     private int freezeLength;
     private boolean isFrozen = false;
     private double originalSpeed;
-    
+
     private double targetFirst;
+
+    // length of pop image
+    private int popCount;
 
     //path
     private Coordinate currentDestination;
@@ -54,10 +57,10 @@ public class Balloon extends SuperSmoothMover
         goDestination();
         checkFrozen();
         if (getY() < 30)
-            takeDamage("endZone", 100);
+            endKill();
         checkPop();
     }
-    
+
     private void checkFrozen(){
         freezeCount ++;
         if (freezeCount >= freezeLength){
@@ -65,7 +68,7 @@ public class Balloon extends SuperSmoothMover
             speed = originalSpeed;
         }
     }
-    
+
     public void freeze(int length){
         if (!isFrozen && !type.equals("white")){
             freezeLength = length;
@@ -73,16 +76,15 @@ public class Balloon extends SuperSmoothMover
             speed = 0;
         }
     }
-    
+
     public double getFirst(){
         return targetFirst;
     }
-    
+
     private void setType(String type){
-        setImage(type.concat(".png"));
-        enableStaticRotation();
-        scale(1.5);
         switch(type){
+            case "dead":
+                return;
             case "red":
                 speed = 2.9;
                 break;
@@ -102,16 +104,31 @@ public class Balloon extends SuperSmoothMover
                 speed = 6;
                 break;
         }
+        setImage(type.concat(".png"));
+        enableStaticRotation();
+        scale(1.5);
+
         originalSpeed = speed;
     }
-    
+
     protected void checkPop(){
+        if (popCount == 0 && type.equals("dead")){
+            getWorld().removeObject(this);
+            return;
+        }
         if (health <= 0){
             int over = Math.abs(health);
             health = 1 - over;
             switch(type){
-                case "red":
+                case "end":
                     getWorld().removeObject(this);
+                    return;
+                case "red":
+                    type = "dead";
+                    Greenfoot.playSound("popSound.mp3");
+                    setImage("pop.png");
+                    scale(0.8);
+                    popCount = 2;
                     break;
                 case "blue":
                     type = "red";
@@ -133,6 +150,12 @@ public class Balloon extends SuperSmoothMover
             }
             setType(type);
         }
+        popCount --;
+    }
+    
+    public void endKill(){
+        type = "end";
+        health = 0;
     }
 
     protected void takeDamage(String projectile, int dmg){
