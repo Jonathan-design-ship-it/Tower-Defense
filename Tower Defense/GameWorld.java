@@ -35,6 +35,7 @@ public class GameWorld extends World
     
     private UI ui;
     private Tower selectedTower = null;
+    private Tower towerBeingPlaced = null;
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -70,15 +71,21 @@ public class GameWorld extends World
             map1Path.add(new Coordinate (470, -70)); //change y to -70       
         }
         
-        ui = new UI();  // Create UI to hold the tower buttons
-        addObject(ui, 900, 100);  // Position UI at the top right (or wherever needed)
+        map = 1;
+        if (map == 1){
+            setBackground(new GreenfootImage("Map1.png"));
+            // Populate map1Path with path coordinates...
+        }
 
-        // Add buttons for each tower, using the Button class
-        addObject(new Button("BombTowerButton.png", 0), 900, 200);  // Bomb Tower Button
-        addObject(new Button("DartMonkeyButton.png", 1), 900, 300);  // Dart Monkey Button
-        addObject(new Button("SuperMonkeyButton.png", 2), 900, 400);  // Super Monkey Button
-        addObject(new Button("IceMonkeyButton.png", 3), 900, 500);  // Ice Monkey Button
-        addObject(new Button("TackShooterButton.png", 4), 900, 600);  // Tack Shooter Button
+        ui = new UI();  
+        addObject(ui, 900, 100);  
+
+        // Add buttons for each tower
+        addObject(new Button("bomb_button.PNG", 0), 900, 200);
+        addObject(new Button("dart_button.PNG", 1), 900, 300);
+        addObject(new Button("super_button.PNG", 2), 900, 400);
+        addObject(new Button("ice_button.PNG", 3), 900, 500);
+        addObject(new Button("tack_button.PNG", 4), 900, 600);
     }
 
     public void act(){
@@ -104,27 +111,39 @@ public class GameWorld extends World
         }
         */
        
-        // Get the selected tower from the UI
         int selectedTowerIndex = ui.getSelectedTower();
 
-        // Check for mouse click on grid to place tower
-        if (Greenfoot.mouseClicked(null)) {
-            MouseInfo mouse = Greenfoot.getMouseInfo();
-            int x = mouse.getX();
-            int y = mouse.getY();
+        // Handle tower selection and following the mouse
+        if (selectedTowerIndex != -1 && towerBeingPlaced == null) {
+            // Spawn the selected tower and make it follow the mouse
+            towerBeingPlaced = createTower(selectedTowerIndex);
+            addObject(towerBeingPlaced, Greenfoot.getMouseInfo().getX(), Greenfoot.getMouseInfo().getY());
+        }
 
-            // Calculate which grid cell was clicked
-            int gridX = (x - 80) / 92;
-            int gridY = (y - 51) / 92;
+        if (towerBeingPlaced != null) {
+            // Move the tower with the mouse
+            towerBeingPlaced.setLocation(Greenfoot.getMouseInfo().getX(), Greenfoot.getMouseInfo().getY());
 
-            // If the click is inside the grid
-            if (gridX >= 0 && gridX < 9 && gridY >= 0 && gridY < 9) {
-                // Place the selected tower at the clicked grid position
-                if (selectedTowerIndex != -1) {
+            // Right-click to place the tower on the grid
+            if (Greenfoot.mouseClicked(null)) {
+                MouseInfo mouse = Greenfoot.getMouseInfo();
+                int x = mouse.getX();
+                int y = mouse.getY();
+
+                // Calculate which grid cell was clicked
+                int gridX = (x - 80) / 92;
+                int gridY = (y - 51) / 92;
+
+                // If the click is inside the grid
+                if (gridX >= 0 && gridX < 9 && gridY >= 0 && gridY < 9) {
+                    // Place the tower at the clicked grid position
                     placeTower(gridX, gridY, selectedTowerIndex);
+                    removeObject(towerBeingPlaced); // Remove the temporary tower
+                    towerBeingPlaced = null; // Reset the placement process
                 }
             }
         }
+
 
         if (Greenfoot.isKeyDown("enter") && !playing) {
             roundCount++;
@@ -291,15 +310,6 @@ public class GameWorld extends World
         spawnCounter = 0;
     }
 
-    public static Coordinate getDestination(int num){
-        if (map == 1)
-            return map1Path.get(num);
-        if (map == 2)
-            return map2Path.get(num);
-        // if map == 3
-        return map3Path.get(num);
-    }
-
     public void grid()
     {
         Coordinate[][] positions = new Coordinate[9][9];
@@ -354,5 +364,24 @@ public class GameWorld extends World
                 addObject(new TackShooter(), x * 92 + 80, y * 92 + 51);
                 break;
         }
+    }
+    
+    private Tower createTower(int towerIndex) {
+        switch (towerIndex) {
+            case 0: return new BombTower();
+            case 1: return new DartMonkey();
+            case 2: return new SuperMonkey();
+            case 3: return new IceMonkey();
+            case 4: return new TackShooter();
+            default: return null;
+        }
+    }
+    
+    public static Coordinate getDestination(int num) {
+        if (map == 1)
+            return map1Path.get(num);
+        if (map == 2)
+            return map2Path.get(num);
+        return map3Path.get(num);
     }
 }
