@@ -18,6 +18,7 @@ public class Bomb extends Projectile
         if(e != null)
         {
             Explosion exp = new Explosion();
+            Greenfoot.playSound("explosion.mp3");
             this.getWorld().addObject((Actor) exp, getX(), getY());
             ArrayList<Balloon> enemies = (ArrayList<Balloon>) exp.getEnemiesInRange(explosionRadius);
             for(Balloon enemy : enemies)
