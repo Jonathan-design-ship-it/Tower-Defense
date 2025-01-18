@@ -92,11 +92,11 @@ public class GameWorld extends World
         addObject(ui, 900, 100);  
 
         // Add buttons for each tower
-        addObject(new Button("bomb_button.PNG", 0), 900, 200);
-        addObject(new Button("dart_button.PNG", 1), 900, 300);
-        addObject(new Button("super_button.PNG", 2), 900, 400);
-        addObject(new Button("ice_button.PNG", 3), 900, 500);
-        addObject(new Button("tack_button.PNG", 4), 900, 600);
+        addObject(new Button("bomb_button.png", 0), 900, 200);
+        addObject(new Button("dart_button.png", 1), 900, 300);
+        addObject(new Button("super_button.png", 2), 900, 400);
+        addObject(new Button("ice_button.png", 3), 900, 500);
+        addObject(new Button("tack_button.png", 4), 900, 600);
     }
 
     public void act(){
