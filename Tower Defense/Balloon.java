@@ -105,13 +105,17 @@ public class Balloon extends SuperSmoothMover
                 speed = 6;
                 break;
         }
-        setImage(type.concat(".png"));
+        setImage("balloon/" + type.concat(".png"));
         enableStaticRotation();
-        scale(1.5);
+        scale(0.8);
         
         originalSpeed = speed;
-        if (freezeCount <= freezeLength)
+        if (freezeCount <= freezeLength){
             speed = 0;
+            GreenfootImage frozenImage = new GreenfootImage("balloon/frozen.png");
+            frozenImage.scale(getImage().getWidth(), getImage().getHeight());
+            getImage().drawImage(frozenImage, 0, 0);
+        }
     }
 
     protected void checkPop(){
@@ -151,7 +155,7 @@ public class Balloon extends SuperSmoothMover
             if (!damagedByBomb) {
                 Greenfoot.playSound("popSound.mp3");
                 setImage("pop.png");
-                scale(0.7);
+                scale(0.8);
                 popCount = 2;
             }
             // give 1 money per pop

@@ -36,6 +36,7 @@ public class Bomb extends Projectile
         super(x, y, expiryDate);
         this.damage = damage;
         this.explosionRadius = explosionRadius;
-        getImage().scale(63,52);
+        setImage("projectile/bomb.png");
+        getImage().scale(32,38);
     }
 }

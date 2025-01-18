@@ -11,6 +11,7 @@ public class Tack extends Dart
     public Tack(int x, int y, int damage, int pierce, int angle, int expiryDate)
     {
         super(angleToDirectionX(x, angle), angleToDirectionY(y, angle), damage, pierce, expiryDate);
+        setImage("projectile/tack.png");
         getImage().scale(30,20);
     }
     
