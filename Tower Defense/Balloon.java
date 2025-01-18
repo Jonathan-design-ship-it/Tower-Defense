@@ -105,7 +105,7 @@ public class Balloon extends SuperSmoothMover
                 speed = 6;
                 break;
         }
-        setImage("balloon/" + type.concat(".png"));
+        setImage("balloon/" + type + ".png");
         enableStaticRotation();
         scale(0.8);
         

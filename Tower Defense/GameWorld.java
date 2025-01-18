@@ -59,29 +59,31 @@ public class GameWorld extends World
         grid();
 
         map = 1;
-        if (map == 1){
-            setBackground(new GreenfootImage("Map1.png"));
-
-            map1Path.add(new Coordinate (170,400));
-            map1Path.add(new Coordinate (170,175));
-            map1Path.add(new Coordinate (375,175));
-            map1Path.add(new Coordinate (375,620));
-            map1Path.add(new Coordinate (95,620));
-            map1Path.add(new Coordinate (95,760));
-            map1Path.add(new Coordinate (750,760));
-            map1Path.add(new Coordinate (750,530));
-            map1Path.add(new Coordinate (540,530));
-            map1Path.add(new Coordinate (540,325));
-            map1Path.add(new Coordinate (760,325));
-            map1Path.add(new Coordinate (750,90));
-            map1Path.add(new Coordinate (470,100));
-            map1Path.add(new Coordinate (470, -70)); //change y to -70       
-        }
-
-        map = 1;
-        if (map == 1){
-            setBackground(new GreenfootImage("Map1.png"));
-            addObject(new HealthZone(), 470, 10);
+        setBackground(new GreenfootImage("map/map" + map + ".png"));
+        switch (map){
+            case 1:
+                map1Path.add(new Coordinate (170,400));
+                map1Path.add(new Coordinate (170,175));
+                map1Path.add(new Coordinate (375,175));
+                map1Path.add(new Coordinate (375,620));
+                map1Path.add(new Coordinate (95,620));
+                map1Path.add(new Coordinate (95,760));
+                map1Path.add(new Coordinate (750,760));
+                map1Path.add(new Coordinate (750,530));
+                map1Path.add(new Coordinate (540,530));
+                map1Path.add(new Coordinate (540,325));
+                map1Path.add(new Coordinate (760,325));
+                map1Path.add(new Coordinate (750,90));
+                map1Path.add(new Coordinate (470,100));
+                map1Path.add(new Coordinate (470, -70)); 
+                addObject(new HealthZone(), 470, 10);
+                break;
+            case 2:
+                addObject(new HealthZone(), 610, 832);
+                break;
+            case 3:
+                addObject(new HealthZone(), 732, 832);
+                break;
         }
         addObject(roundText = new Text(), 975, 30);
         addObject(moneyText = new Text(), 975, 65);
