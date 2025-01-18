@@ -108,8 +108,10 @@ public class Balloon extends SuperSmoothMover
         setImage(type.concat(".png"));
         enableStaticRotation();
         scale(1.5);
-
+        
         originalSpeed = speed;
+        if (freezeCount <= freezeLength)
+            speed = 0;
     }
 
     protected void checkPop(){
@@ -117,8 +119,7 @@ public class Balloon extends SuperSmoothMover
             popCount--;
             return;
         }
-        if (freezeCount >= freezeLength)
-            setType(type);
+        setType(type);
         if (health <= 0 || type.equals("dead")){
             int over = Math.abs(health);
             health = 1 - over;
