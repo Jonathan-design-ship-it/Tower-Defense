@@ -73,7 +73,7 @@ public class GameWorld extends World
             map1Path.add(new Coordinate (540,530));
             map1Path.add(new Coordinate (540,325));
             map1Path.add(new Coordinate (760,325));
-            map1Path.add(new Coordinate (760,100));
+            map1Path.add(new Coordinate (750,90));
             map1Path.add(new Coordinate (470,100));
             map1Path.add(new Coordinate (470, -70)); //change y to -70       
         }
