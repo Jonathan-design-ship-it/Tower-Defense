@@ -115,8 +115,9 @@ public class Balloon extends SuperSmoothMover
         if (popCount > 0) {
             popCount--;
             return;
-        } 
-        setType(type);
+        }
+        if (freezeCount >= freezeLength)
+            setType(type);
         if (health <= 0 || type.equals("dead")){
             int over = Math.abs(health);
             health = 1 - over;
@@ -180,6 +181,8 @@ public class Balloon extends SuperSmoothMover
 
     protected void takeDamage(String projectile, int dmg){
         if (projectile.equals("bomb") && type.equals("black")){
+            // dont damage
+        } else if (freezeCount < freezeLength && !projectile.equals("bomb")){
             // dont damage
         } else {
             health -= dmg;
