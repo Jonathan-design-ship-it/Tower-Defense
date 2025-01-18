@@ -154,7 +154,6 @@ public class GameWorld extends World
 
         if (Greenfoot.isKeyDown("enter") && !playing) {
             roundCount++;
-            System.out.println("Round Count: " + roundCount);
             addRound(roundCount);
             playing = true;
         }
@@ -328,6 +327,12 @@ public class GameWorld extends World
                 for (int i = 0; i < 15; i++) {
                     spawn.add(new Spawner("yellow", 20*i));
                 }
+                break;
+            case 12:
+                break;
+            case 50:
+                Greenfoot.setWorld(new WinScreen());
+                break;
         }
         spawnCounter = 0;
     }

@@ -148,7 +148,7 @@ public class Balloon extends SuperSmoothMover
             }
             Greenfoot.playSound("popSound.mp3");
             setImage("pop.png");
-            scale(0.8);
+            scale(0.7);
             popCount = 2;
             // give 1 money per pop
             GameWorld gameWorld = (GameWorld) getWorld();
