@@ -112,23 +112,20 @@ public class Balloon extends SuperSmoothMover
     }
 
     protected void checkPop(){
-        if (popCount == 0 && type.equals("dead")){
-            getWorld().removeObject(this);
+        if (popCount > 0) {
+            popCount--;
             return;
-        }
-        if (health <= 0){
+        } 
+        setType(type);
+        if (health <= 0 || type.equals("dead")){
             int over = Math.abs(health);
             health = 1 - over;
             switch(type){
-                case "end":
+                case "dead":
                     getWorld().removeObject(this);
                     return;
                 case "red":
                     type = "dead";
-                    Greenfoot.playSound("popSound.mp3");
-                    setImage("pop.png");
-                    scale(0.8);
-                    popCount = 2;
                     break;
                 case "blue":
                     type = "red";
@@ -148,14 +145,37 @@ public class Balloon extends SuperSmoothMover
                     getWorld().addObject(new Balloon("yellow", destinations, over), getX(), getY());
                     break;
             }
-            setType(type);
+            Greenfoot.playSound("popSound.mp3");
+            setImage("pop.png");
+            scale(0.8);
+            popCount = 2;
+            // give 1 money per pop
+            GameWorld gameWorld = (GameWorld) getWorld();
+            gameWorld.money += 1;
         }
         popCount --;
     }
-    
-    public void endKill(){
-        type = "end";
-        health = 0;
+
+    public int endKill(){
+        //type = "end";
+        //health = 0;
+        getWorld().removeObject(this);
+        switch(type){
+            case "red":
+                return 1;
+            case "blue":
+                return 2;
+            case "green":
+                return 3;
+            case "yellow":
+                return 4;
+            case "black":
+                return 9;
+            case "white":
+                return 9;
+            default:
+                return 0; // wont be called
+        }
     }
 
     protected void takeDamage(String projectile, int dmg){

@@ -22,7 +22,6 @@ public class GameWorld extends World
 
     private boolean playing = true;
     // round spawning
-    private int roundCount = 0; // round number
     private Spawner s;
     private static Queue<Spawner> spawn = new LinkedList<Spawner>();
     private int spawnCounter; // a counter for when to spawn balloon
@@ -31,8 +30,15 @@ public class GameWorld extends World
     private int greenCount; // amount of green balloon
     private int yellowCount;  // amount of yellow balloon
 
+    private Text roundText;
+    private int roundCount = 0; // round number
+
+    private Text moneyText;
+    public static int money; // start at 650
+    private int endMoney = 101;
+
     private int actCount;
-    
+
     private UI ui;
     private Tower selectedTower = null;
     private Tower towerBeingPlaced = null;
@@ -44,7 +50,8 @@ public class GameWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1100, 842, 1, false);
-
+        money = 650;
+        
         map1Path = new ArrayList<Coordinate>();
         map2Path = new ArrayList<Coordinate>();
         map3Path = new ArrayList<Coordinate>();
@@ -70,12 +77,14 @@ public class GameWorld extends World
             map1Path.add(new Coordinate (470,100));
             map1Path.add(new Coordinate (470, -70)); //change y to -70       
         }
-        
+
         map = 1;
         if (map == 1){
             setBackground(new GreenfootImage("Map1.png"));
-            // Populate map1Path with path coordinates...
+            addObject(new HealthZone(), 470, 10);
         }
+        addObject(roundText = new Text(), 975, 30);
+        addObject(moneyText = new Text(), 975, 65);
 
         ui = new UI();  
         addObject(ui, 900, 100);  
@@ -92,27 +101,26 @@ public class GameWorld extends World
         actCount ++;
         /*
         if (actCount == 60){
-            Random random = new Random();
-            int num = random.nextInt(6);
-            //int num = 0;
-            if (num == 0)
-                addObject(new Balloon("red", map1Path), 0, 400);
-            if (num == 1)
-                addObject(new Balloon("blue", map1Path), 0, 400);
-            if (num == 2)
-                addObject(new Balloon("green", map1Path), 0, 400);
-            if (num == 3)
-                addObject(new Balloon("yellow", map1Path), 0, 400);
-            if (num == 4)
-                addObject(new Balloon("white", map1Path), 0, 400);
-            if (num == 5)
-                addObject(new Balloon("black", map1Path), 0, 400);
-            actCount = 0;
+        Random random = new Random();
+        int num = random.nextInt(6);
+        //int num = 0;
+        if (num == 0)
+        addObject(new Balloon("red", map1Path), 0, 400);
+        if (num == 1)
+        addObject(new Balloon("blue", map1Path), 0, 400);
+        if (num == 2)
+        addObject(new Balloon("green", map1Path), 0, 400);
+        if (num == 3)
+        addObject(new Balloon("yellow", map1Path), 0, 400);
+        if (num == 4)
+        addObject(new Balloon("white", map1Path), 0, 400);
+        if (num == 5)
+        addObject(new Balloon("black", map1Path), 0, 400);
+        actCount = 0;
         }
-        */
-       
-        int selectedTowerIndex = ui.getSelectedTower();
+         */
 
+        int selectedTowerIndex = ui.getSelectedTower();
         // Handle tower selection and following the mouse
         if (selectedTowerIndex != -1 && towerBeingPlaced == null) {
             // Spawn the selected tower and make it follow the mouse
@@ -144,7 +152,6 @@ public class GameWorld extends World
             }
         }
 
-
         if (Greenfoot.isKeyDown("enter") && !playing) {
             roundCount++;
             System.out.println("Round Count: " + roundCount);
@@ -152,10 +159,21 @@ public class GameWorld extends World
             playing = true;
         }
 
+        if (roundCount == 0){
+            roundText.updateText("Round: 1");
+        }else{
+            roundText.updateText("Round: " + roundCount);            
+        }
+        moneyText.updateText("Money: " + money);
+
         if (playing)
             spawnRound();
     }
     
+    public void addMoney(int money){
+        this.money += money;
+    }
+
     private void spawnRound (){
         if (spawn.size() > 0){
             if (spawn.peek().getTime() == spawnCounter){
@@ -163,7 +181,11 @@ public class GameWorld extends World
             }
             spawnCounter ++;
         } else {
-            playing = false;
+            if (getObjects(Balloon.class).isEmpty()) {
+                playing = false;
+                if (roundCount > 0)
+                    money += (endMoney -= 1);
+            }
         }
     }
 
@@ -344,7 +366,7 @@ public class GameWorld extends World
             System.out.println(); // Move to the next line after each row
         }
     }
-    
+
     private void placeTower(int x, int y, int towerIndex) {
         // Use the selected tower index to place the correct tower at the grid coordinates
         switch (towerIndex) {
@@ -365,7 +387,7 @@ public class GameWorld extends World
                 break;
         }
     }
-    
+
     private Tower createTower(int towerIndex) {
         switch (towerIndex) {
             case 0: return new BombTower();
@@ -376,7 +398,7 @@ public class GameWorld extends World
             default: return null;
         }
     }
-    
+
     public static Coordinate getDestination(int num) {
         if (map == 1)
             return map1Path.get(num);
