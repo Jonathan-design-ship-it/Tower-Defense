@@ -31,6 +31,7 @@ public class Balloon extends SuperSmoothMover
 
     // length of pop image
     private int popCount;
+    private boolean damagedByBomb = false;
 
     //path
     private Coordinate currentDestination;
@@ -146,15 +147,18 @@ public class Balloon extends SuperSmoothMover
                     getWorld().addObject(new Balloon("yellow", destinations, over), getX(), getY());
                     break;
             }
-            Greenfoot.playSound("popSound.mp3");
-            setImage("pop.png");
-            scale(0.7);
-            popCount = 2;
+            if (!damagedByBomb) {
+                Greenfoot.playSound("popSound.mp3");
+                setImage("pop.png");
+                scale(0.7);
+                popCount = 2;
+            }
             // give 1 money per pop
             GameWorld gameWorld = (GameWorld) getWorld();
             gameWorld.money += 1;
         }
         popCount --;
+        damagedByBomb = false;
     }
 
     public int endKill(){
@@ -186,6 +190,9 @@ public class Balloon extends SuperSmoothMover
             // dont damage
         } else {
             health -= dmg;
+            if (projectile.equals("bomb")) {
+                damagedByBomb = true;
+            }
         }
     }
 

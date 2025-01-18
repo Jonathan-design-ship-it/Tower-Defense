@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Bomb extends Projectile
 {
     private int explosionRadius;
-    
+
     public void act()
     {
         super.act();
@@ -18,7 +18,7 @@ public class Bomb extends Projectile
         if(e != null)
         {
             Explosion exp = new Explosion();
-            Greenfoot.playSound("explosion.mp3");
+            Greenfoot.playSound("explosion.wav");
             this.getWorld().addObject((Actor) exp, getX(), getY());
             ArrayList<Balloon> enemies = (ArrayList<Balloon>) exp.getEnemiesInRange(explosionRadius);
             for(Balloon enemy : enemies)
@@ -27,10 +27,10 @@ public class Bomb extends Projectile
             }
             remove = true;
         }
-        
+
         remove();
     }
-    
+
     public Bomb(int x, int y, int damage, int explosionRadius, int expiryDate)
     {
         super(x, y, expiryDate);
