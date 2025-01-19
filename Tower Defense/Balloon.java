@@ -57,8 +57,6 @@ public class Balloon extends SuperSmoothMover
         y = getY();
         goDestination();
         checkFrozen();
-        if (getY() < 30)
-            endKill();
         checkPop();
     }
 

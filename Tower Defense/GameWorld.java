@@ -14,9 +14,8 @@ import java.util.LinkedList;
  */
 public class GameWorld extends World
 {
-    public static ArrayList<Coordinate> map1Path;
-    public static ArrayList<Coordinate> map2Path;
-    public static ArrayList<Coordinate> map3Path;
+    public static ArrayList<Coordinate> mapPath;
+
     //private Coordinate c;
     private static int map;
 
@@ -51,37 +50,70 @@ public class GameWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1100, 842, 1, false);
         money = 650;
-        
-        map1Path = new ArrayList<Coordinate>();
-        map2Path = new ArrayList<Coordinate>();
-        map3Path = new ArrayList<Coordinate>();
+
+        mapPath = new ArrayList<Coordinate>();
 
         grid();
 
-        map = 1;
+        map = 3;
         setBackground(new GreenfootImage("map/map" + map + ".png"));
         switch (map){
             case 1:
-                map1Path.add(new Coordinate (170,400));
-                map1Path.add(new Coordinate (170,175));
-                map1Path.add(new Coordinate (375,175));
-                map1Path.add(new Coordinate (375,620));
-                map1Path.add(new Coordinate (95,620));
-                map1Path.add(new Coordinate (95,760));
-                map1Path.add(new Coordinate (750,760));
-                map1Path.add(new Coordinate (750,530));
-                map1Path.add(new Coordinate (540,530));
-                map1Path.add(new Coordinate (540,325));
-                map1Path.add(new Coordinate (760,325));
-                map1Path.add(new Coordinate (750,90));
-                map1Path.add(new Coordinate (470,100));
-                map1Path.add(new Coordinate (470, -70)); 
+                mapPath.add(new Coordinate (-50,400));
+                mapPath.add(new Coordinate (0,400));
+                mapPath.add(new Coordinate (170,400));
+                mapPath.add(new Coordinate (170,175));
+                mapPath.add(new Coordinate (375,175));
+                mapPath.add(new Coordinate (375,620));
+                mapPath.add(new Coordinate (95,620));
+                mapPath.add(new Coordinate (95,760));
+                mapPath.add(new Coordinate (750,760));
+                mapPath.add(new Coordinate (750,530));
+                mapPath.add(new Coordinate (540,530));
+                mapPath.add(new Coordinate (540,325));
+                mapPath.add(new Coordinate (760,325));
+                mapPath.add(new Coordinate (750,90));
+                mapPath.add(new Coordinate (470,100));
+                mapPath.add(new Coordinate (470, -70)); 
                 addObject(new HealthZone(), 470, 10);
                 break;
             case 2:
+                mapPath.add(new Coordinate (-50,415));
+                mapPath.add(new Coordinate (0,415));
+                mapPath.add(new Coordinate (320,415));
+                mapPath.add(new Coordinate (320,200));
+                mapPath.add(new Coordinate (195,190));
+                mapPath.add(new Coordinate (195,65));
+                mapPath.add(new Coordinate (725,65));
+                mapPath.add(new Coordinate (725,205));
+                mapPath.add(new Coordinate (510,210));
+                mapPath.add(new Coordinate (510,360));
+                mapPath.add(new Coordinate (735,360));
+                mapPath.add(new Coordinate (735,525));
+                mapPath.add(new Coordinate (200,525));
+                mapPath.add(new Coordinate (200,760));
+                mapPath.add(new Coordinate (410,760));
+                mapPath.add(new Coordinate (410,610));
+                mapPath.add(new Coordinate (610,610));
+                mapPath.add(new Coordinate (610,902));
                 addObject(new HealthZone(), 610, 832);
                 break;
             case 3:
+                mapPath.add(new Coordinate (130,-50));
+                mapPath.add(new Coordinate (130,0));
+                mapPath.add(new Coordinate (130,340));
+                mapPath.add(new Coordinate (280,340));
+                mapPath.add(new Coordinate (280,520));
+                mapPath.add(new Coordinate (115,520));
+                mapPath.add(new Coordinate (115,695));
+                mapPath.add(new Coordinate (435,695));
+                mapPath.add(new Coordinate (435,160));
+                mapPath.add(new Coordinate (750,160));
+                mapPath.add(new Coordinate (750,340));
+                mapPath.add(new Coordinate (590,340));
+                mapPath.add(new Coordinate (590,520));
+                mapPath.add(new Coordinate (735,520));
+                mapPath.add(new Coordinate (735,902));
                 addObject(new HealthZone(), 732, 832);
                 break;
         }
@@ -107,17 +139,17 @@ public class GameWorld extends World
         int num = random.nextInt(6);
         //int num = 0;
         if (num == 0)
-        addObject(new Balloon("red", map1Path), 0, 400);
+        addObject(new Balloon("red", mapPath), 0, 400);
         if (num == 1)
-        addObject(new Balloon("blue", map1Path), 0, 400);
+        addObject(new Balloon("blue", mapPath), 0, 400);
         if (num == 2)
-        addObject(new Balloon("green", map1Path), 0, 400);
+        addObject(new Balloon("green", mapPath), 0, 400);
         if (num == 3)
-        addObject(new Balloon("yellow", map1Path), 0, 400);
+        addObject(new Balloon("yellow", mapPath), 0, 400);
         if (num == 4)
-        addObject(new Balloon("white", map1Path), 0, 400);
+        addObject(new Balloon("white", mapPath), 0, 400);
         if (num == 5)
-        addObject(new Balloon("black", map1Path), 0, 400);
+        addObject(new Balloon("black", mapPath), 0, 400);
         actCount = 0;
         }
          */
@@ -170,7 +202,7 @@ public class GameWorld extends World
         if (playing)
             spawnRound();
     }
-    
+
     public void addMoney(int money){
         this.money += money;
     }
@@ -178,7 +210,7 @@ public class GameWorld extends World
     private void spawnRound (){
         if (spawn.size() > 0){
             if (spawn.peek().getTime() == spawnCounter){
-                addObject(new Balloon(spawn.poll().getType(), map1Path), 0, 400);
+                addObject(new Balloon(spawn.poll().getType(), mapPath), mapPath.get(0).getX(), mapPath.get(0).getY());
             }
             spawnCounter ++;
         } else {
@@ -407,10 +439,6 @@ public class GameWorld extends World
     }
 
     public static Coordinate getDestination(int num) {
-        if (map == 1)
-            return map1Path.get(num);
-        if (map == 2)
-            return map2Path.get(num);
-        return map3Path.get(num);
+        return mapPath.get(num);
     }
 }
